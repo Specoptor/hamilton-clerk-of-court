@@ -1,6 +1,8 @@
+import pprint
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
+from models import TableReader
 
 BASE_ENDPOINT = "https://www.courtclerk.org/records-search/foreclosure/"
 
@@ -41,3 +43,8 @@ results_count = number_of_results_tag.get_attribute('innerHTML')
 
 # print results count
 print(f'results found: {results_count}')
+
+# read the table data
+table_reader = TableReader(driver)
+table_data = table_reader.table_data
+pprint.pprint(table_data)
