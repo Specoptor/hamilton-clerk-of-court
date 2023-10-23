@@ -2,11 +2,27 @@ import pprint
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
-from models import TableReader
+from models import TableReader, DocumentProcessor
+from utils import initial_docs_directory
 
 BASE_ENDPOINT = "https://www.courtclerk.org/records-search/foreclosure/"
 
-driver = webdriver.Chrome()
+########### Chrome Options #########
+options = webdriver.ChromeOptions()
+settings = {
+    "download.default_directory": initial_docs_directory(),  # Set default download directory
+    "download.prompt_for_download": False,  # Disable prompt
+    "download.directory_upgrade": True,  # Enable directory upgrade
+    "plugins.always_open_pdf_externally": True  # Disable PDF viewer and always download
+}
+
+# add settings to chrome options
+options.add_experimental_option("prefs", settings)
+
+# create the webdriver instance
+driver = webdriver.Chrome(options=options)
+
+# open the webpage
 driver.get(BASE_ENDPOINT)
 
 # ensure the webpage is completely loaded before proceed to fill the form.
@@ -48,3 +64,6 @@ print(f'results found: {results_count}')
 table_reader = TableReader(driver)
 table_data = table_reader.table_data
 pprint.pprint(table_data)
+
+doc_processor = DocumentProcessor(driver, table_reader)
+doc_processor.save_all_initial_filing_docs()
