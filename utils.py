@@ -90,7 +90,7 @@ def wait_for_pdf_download(timeout: int = 60) -> None:
     while time.time() < end_time:
         downloads_in_process = [f for f in os.listdir(download_dir) if f.endswith('.crdownload')]
         if not downloads_in_process:
-            return
+            break
     return None
 
 
@@ -103,25 +103,31 @@ def pdf_downloaded_successfully(case_number: str) -> bool:
     """
     dir_path = initial_docs_directory()
     pdf_files = [f for f in os.listdir(dir_path) if f.endswith('.pdf')]
-    formatted_case_number = case_number.replace(' ', '')
+    downloads_in_process = [f for f in os.listdir(dir_path) if f.endswith('.crdownload')]
     for pdf_file in pdf_files:
-        if formatted_case_number in pdf_file:
+        if case_number in pdf_file:
             return True
+    else:
+        for download in downloads_in_process:
+            if case_number in download:
+                wait_for_pdf_download()
+                return pdf_downloaded_successfully(case_number)
     return False
 
 
 def attempt_to_download_again(element: WebElement, case_number: str) -> bool:
     """
-    Clicks the given element and waits for the download to complete.
+    Clicks the given element and waits for the download to complete. 1 attempt allowed.
 
     :param case_number: case number of initial file pdf to download
     :param element: The element to click.
     :return: None
     """
-    element.click()
-    wait_for_pdf_download()
-    for i in range(5):
-        while not pdf_downloaded_successfully(case_number):
-            wait_for_pdf_download()
-            return True
+    time.sleep(5)
+    if pdf_downloaded_successfully(case_number):
+        return True
+    else:
+        time.sleep(5)
+        element.click()
+        wait_for_pdf_download()
     return False

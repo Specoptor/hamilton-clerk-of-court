@@ -150,6 +150,7 @@ class DocumentProcessor:
             # wait for the download to complete
             wait_for_pdf_download()
 
+            time.sleep(3)
             if not pdf_downloaded_successfully(case_number):
                 attempt_to_download_again(initial_filing_doc_button, case_number)
 
