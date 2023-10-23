@@ -1,59 +1,58 @@
 # Foreclosure Records Scraper
 
-This script uses Selenium to automate the process of searching foreclosure records for a given date range on the website `https://www.courtclerk.org/records-search/foreclosure/`. After fetching the records, it prints the count of the results and then leverages the `TableReader` class from `models.py` to extract and print the table data.
+This tool is designed to automate the process of searching and retrieving foreclosure records from a specific website. It utilizes Selenium WebDriver for browser automation and has utilities to handle PDF downloads, among other tasks.
 
-### Dependencies
+## Project Structure:
 
-- `selenium`
-  
-You can install the required dependencies using pip:
+### 1. `main.py`
+- **Purpose**: Main driver script for the project.
+- **Functionalities**:
+   - **Chrome Setup**: Configures Chrome options for seamless document downloading, including setting the default download directory and disabling download prompts.
+   - **Web Navigation**: Opens the foreclosure search webpage and waits for it to load.
+   - **Form Submission**: Fills out the search form on the webpage, selecting categories, and entering date ranges.
+   - **Table Data Retrieval**: After submitting the form, the script clicks a button to show all rows of results, retrieves the number of results, and then processes table data using the `TableReader` class.
+   - **Document Processing**: Utilizes the `DocumentProcessor` class to save all initial filing documents.
 
-```
-pip install selenium
-```
+### 2. `models.py`
+- **`TableReader` Class**:
+   - Reads table data from the webpage.
+   - Processes table rows and maps columns to specific fields like case number, date filed, caption, and class.
+- **`DocumentProcessor` Class**:
+   - Processes documents linked in the table.
+   - Downloads initial filing documents for each entry in the table, ensuring successful downloads and attempting retries if necessary.
 
-### Requirements
+### 3. `utils.py`
+- **Purpose**: Contains utility functions that assist in various tasks.
+- **Key Functions**:
+   - **Resume Downloads**: Resumes any paused downloads in Chrome.
+   - **Manage Initial Docs Directory**: Returns or creates a directory path for saving initial docs.
+   - **PDF Count**: Retrieves the number of PDFs present in the initial docs directory.
+   - **Wait for PDF Download**: Pauses the script until a PDF finishes downloading or a timeout is reached.
+   - **Check PDF Download**: Checks if a document corresponding to a specific case number has been downloaded successfully.
+   - **Retry Download**: If a download fails, this function attempts to download the document again.
 
-- Google Chrome browser installed.
-- ChromeDriver executable matching the version of the Google Chrome browser. Ensure that the ChromeDriver executable is in the system's `PATH` or in the same directory as the script.
+### 4. `xpaths.py`
+- **Purpose**: Provides XPath constants and a dynamic XPath generation function.
+- **Key Functionalities**:
+   - **XPath Constants**: Contains predefined XPaths for various elements in the website.
+   - **Dynamic XPath Generation**: A function (`xpath_to_case_docs_button`) is provided to generate the XPath for the case docs button based on a case number.
 
-### Usage
+## Setup & Installation:
 
-1. Navigate to the directory containing `main.py` and `models.py`.
-2. Run the main script using:
+1. **Dependencies**:
+   - Install the required Python packages using:
+     ```
+     pip install -r requirements.txt
+     ```
 
-```
-python main.py
-```
+2. **Browser Setup**:
+   - Ensure you have Google Chrome installed.
+   - The corresponding ChromeDriver should be available in your system's PATH for Selenium to function correctly.
 
-### Script Walkthrough
+## Usage:
 
-1. The script initializes a Chrome web driver and navigates to the BASE_ENDPOINT.
-2. Waits implicitly for 10 seconds to ensure the webpage loads completely.
-3. Fills the foreclosure search form:
-    - Selects a foreclosure category from a dropdown.
-    - Enters a begin date (in this example, "08/01/2023").
-    - Enters an end date (in this example, "08/31/2023").
-    - Clicks the search button.
-4. Once the results are loaded, it clicks the "show all rows" button.
-5. Retrieves the number of results found and prints it.
-6. Uses the `TableReader` class from `models.py` to extract data from the table on the webpage.
-7. Prints the table data.
-
-### About `models.py`
-
-- `models.py` contains a class called `TableReader` that is designed to extract table data from a webpage using Selenium.
-- The `TableReader` class takes a webdriver instance as a parameter and reads the table data from the given webpage.
-- The main functionality is encapsulated in the `_read_table` method, which returns a list of dictionaries, each representing a row from the table.
-
-### Notes
-
-- Ensure that you have a stable internet connection.
-- If the structure of the webpage changes, the script may not work as expected. Ensure that the XPATHs and IDs used in the script match the current structure of the website.
-- Always make sure to use web scraping responsibly and ethically, and comply with the website's `robots.txt` file or terms of service.
-
-### License
-
-This script and module are provided "as is" without any warranty. Use at your own risk. 
-
----
+1. Navigate to the project directory in your terminal or command prompt.
+2. Execute the main script to initiate the scraping process:
+    ```
+    python main.py
+    ```
