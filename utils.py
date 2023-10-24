@@ -1,3 +1,4 @@
+import json
 import os
 import re
 import time
@@ -186,6 +187,12 @@ def process_directory(directory_path: str | None = None) -> dict[str, list[str]]
         if filename.endswith(".pdf"):
             pdf_path = os.path.join(directory_path, filename)
             texts[filename.split('_')[0]] = extract_text_from_pdf(pdf_path)
+
+    # save the pdfs to json file if all pdfs processed successfully.
+    if len(texts) == len(os.listdir(directory_path)):
+        print(f"Successfully processed {len(texts)} PDF files")
+        with open('parsed_pdfs.json', 'w') as f:
+            json.dump(texts, f, indent=4)
     return texts
 
 
@@ -406,3 +413,17 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         'property_price': property_price(),
         'interest_rate': interest_rate(),
     }
+
+
+def get_processed_pdfs() -> dict[str, list[str]]:
+    """
+    Get the processed pdfs from the json file. If the file does not exist, process the directory and return the
+    processed pdfs.
+
+    :return: a dictionary with key as case number and list of pages as key.
+    """
+    if os.path.exists('parsed_pdfs.json'):
+        with open('parsed_pdfs.json', 'r') as f:
+            return json.load(f)
+    else:
+        return process_directory()
