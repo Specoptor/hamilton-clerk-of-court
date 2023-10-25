@@ -19,7 +19,7 @@
     "first_owner": "BRITTANY M MOTLEY",
     "second_owner": null,
     "property_address": "410 Carrington Lane,, : Unit 310, Loveland, Ohio 45140",
-    "mailing_address": null,
+    "mailing_address": "410 Carrington Lane, Unit 310, :\nLoveland, Ohio 45140",
     "property_price": null,
     "interest_rate": null
   },
@@ -27,7 +27,7 @@
     "first_owner": "GREGORY HAMILTON",
     "second_owner": null,
     "property_address": "579 DEERFIELD DR, Harrison, OH 45030",
-    "mailing_address": null,
+    "mailing_address": "579 Deerfield Drive\nHarrison, OH 45030",
     "property_price": "$389.81",
     "interest_rate": "3.875%"
   },
@@ -43,7 +43,7 @@
     "first_owner": "JORDAN A MITCHELL",
     "second_owner": null,
     "property_address": "3595 Harvey Avenue, Cincinnati, Ohio 45229",
-    "mailing_address": null,
+    "mailing_address": "1. Plaintiff, Harvey Point - Cedar Meadows IIT Homeowners Association, Inc., isa\nnot-for-profit corporation organized and existing under the laws of the State of Ohio which\nis organized to administer and maintain the property commonly known as Harvey Point-\n\nCedar Meadows in Hamilton County, Ohio.\n\n04896",
     "property_price": null,
     "interest_rate": null
   },
@@ -67,7 +67,7 @@
     "first_owner": "MARGARET L BAIRD",
     "second_owner": null,
     "property_address": "3535 Amberway Court,, : Cincinnati, Ohio 45251",
-    "mailing_address": null,
+    "mailing_address": "3535 Amberway Court :\nCincinnati, Ohio 45251",
     "property_price": null,
     "interest_rate": null
   },
@@ -75,7 +75,7 @@
     "first_owner": "JASON RUEBEL",
     "second_owner": null,
     "property_address": "3402 WALWORTH AVENUE, CINCINNATI, OHIO 45226",
-    "mailing_address": null,
+    "mailing_address": "3402 Walworth Avenue\nCincinnati, OH 45226",
     "property_price": "$201,600.00",
     "interest_rate": "3.875%"
   },
@@ -83,7 +83,7 @@
     "first_owner": "UNKNOWN HEIRS OF WILLIE",
     "second_owner": null,
     "property_address": "1967 COMPTON RD, CINCINNATI, OHIO 45231",
-    "mailing_address": null,
+    "mailing_address": "2. There has been a default under the terms of the note; plaintiff has performed all\n\nconditions precedent; and plaintiff has accelerated the debt.\n\nE-FILED 08/02/2023 9:26 AM / CONFIRMATION 13520",
     "property_price": "$107,470.11",
     "interest_rate": "2.625%"
   },
@@ -123,7 +123,7 @@
     "first_owner": "MARCELLA THOMPSON",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "2192 Grand Avenue\n\nCincinnati, Ohio 45214",
     "property_price": "$53,000.00",
     "interest_rate": "13.25%"
   },
@@ -131,7 +131,7 @@
     "first_owner": "GINA MCFARLANEEL",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "399 West Galbraith Road, Unit 213\nCincinnati, Ohio 45215",
     "property_price": null,
     "interest_rate": null
   },
@@ -139,7 +139,7 @@
     "first_owner": "DEBORAH J STROHOFER",
     "second_owner": null,
     "property_address": "3950 Olde Savannah Drive, Unit 9",
-    "mailing_address": null,
+    "mailing_address": "3950 Olde Savannah Drive, Unit 9\nCincinnati, Ohio 45247",
     "property_price": null,
     "interest_rate": null
   },
@@ -147,7 +147,7 @@
     "first_owner": "JOANNA L MOSS",
     "second_owner": null,
     "property_address": "8721 Cheviot Road, Colerain Twp., OH 45251",
-    "mailing_address": null,
+    "mailing_address": "21004303,CJ22026",
     "property_price": "$254,703.06",
     "interest_rate": "5.25%"
   },
@@ -155,7 +155,7 @@
     "first_owner": "JACOB D DINGLER",
     "second_owner": null,
     "property_address": "7217 Creekview Drive, Unit 11, Cincinnati, Ohio 45247",
-    "mailing_address": null,
+    "mailing_address": "7217 Creekview Drive, Unit 11\nCincinnati, Ohio 45247",
     "property_price": null,
     "interest_rate": null
   },
@@ -163,7 +163,7 @@
     "first_owner": "LINDA A OLEARY",
     "second_owner": null,
     "property_address": "410 Carrington Lane,, : Unit 102, Loveland, Ohio 45140",
-    "mailing_address": null,
+    "mailing_address": "410 Carrington Lane, Unit 102, :\nLoveland, Ohio 45140",
     "property_price": null,
     "interest_rate": null
   },
@@ -171,7 +171,7 @@
     "first_owner": "HARRISON BUTLER",
     "second_owner": null,
     "property_address": "3948 HOLMAN CIR, CINCINNATI, OH 45236-3919",
-    "mailing_address": null,
+    "mailing_address": "10755 Meadow Lake Drive\nCincinnati, OH 45252",
     "property_price": "$108,000.00",
     "interest_rate": "0.125%"
   },
@@ -179,7 +179,7 @@
     "first_owner": "JOANN BARCHUE",
     "second_owner": null,
     "property_address": "3404 HARVEY AVENUE, CINCINNATI, OHIO 45229",
-    "mailing_address": null,
+    "mailing_address": "3404 Harvey Avenue\nCincinnati, OH 45229",
     "property_price": "$55,064.36",
     "interest_rate": "3.75%"
   },
@@ -187,7 +187,7 @@
     "first_owner": "STEVEN P LEIST AKA STEVE",
     "second_owner": null,
     "property_address": "3618 PUHLMAN AVENUE, CINCINNATI, OH 45211",
-    "mailing_address": null,
+    "mailing_address": "3843 Carrie Avenue\nCincinnati, Ohio 45211",
     "property_price": "$62,251.33",
     "interest_rate": "3.87500%"
   },
@@ -195,7 +195,7 @@
     "first_owner": "MELISSA N WARREN",
     "second_owner": null,
     "property_address": "5436; Bluesky Drive, Unit #21, Cincinnati, Ohio 45247",
-    "mailing_address": null,
+    "mailing_address": "5435 Blue Sky Drive, Unit #21\nCincinnati, Ohio 45247",
     "property_price": null,
     "interest_rate": "3.78%"
   },
@@ -203,7 +203,7 @@
     "first_owner": "CRISTAL COLE",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "12097 Crossing Drive\nCincinnati, Ohio 45246",
     "property_price": null,
     "interest_rate": null
   },
@@ -211,7 +211,7 @@
     "first_owner": "CARL D VASILIOU",
     "second_owner": null,
     "property_address": "3712 Homelawn Avenue, Cincinnati, OH 45211",
-    "mailing_address": null,
+    "mailing_address": "3712 Homelawn Avenue\nCincinnati, OH 45211",
     "property_price": null,
     "interest_rate": null
   },
@@ -219,7 +219,7 @@
     "first_owner": "LAFE STATON AS HEIR AND",
     "second_owner": null,
     "property_address": "12013 MAXIM WAY, SYMMES TWP, OH 45249",
-    "mailing_address": null,
+    "mailing_address": "730 Rothrock Drive\n\nGalloway, OH 43119",
     "property_price": null,
     "interest_rate": "3.625%"
   },
@@ -251,7 +251,7 @@
     "first_owner": "WILLIAM DELOACH",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "6720 ELBROOK AVENUE JUDGE:\n\nCINCINNATI OH 45237",
     "property_price": "$66,345.02",
     "interest_rate": "3.625%"
   },
@@ -259,7 +259,7 @@
     "first_owner": "JOHN DOES NAMES",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "3635 Clarion Avenue\n\nCincinnati, OH 45207",
     "property_price": null,
     "interest_rate": "6.25%"
   },
@@ -267,7 +267,7 @@
     "first_owner": "ANDREW H KASAKO",
     "second_owner": null,
     "property_address": "283 Bedford Glen Lane, Cincinnati, Ohio 45246",
-    "mailing_address": null,
+    "mailing_address": "283 Bedford Glen Lane\nCincinnati, Ohio 45246",
     "property_price": null,
     "interest_rate": null
   },
@@ -275,7 +275,7 @@
     "first_owner": "ESTATE OF FELICIA NOEL",
     "second_owner": null,
     "property_address": "10635",
-    "mailing_address": null,
+    "mailing_address": "1318 Lincoln Ave.\nCincinnati, Ohio 45206",
     "property_price": "$82,094.61",
     "interest_rate": "2.99%"
   },
@@ -283,7 +283,7 @@
     "first_owner": "XIN LU",
     "second_owner": null,
     "property_address": "499 Sandheger Place, CINCINNATI, OHIO 45220",
-    "mailing_address": null,
+    "mailing_address": "7600 Montgomery Road\nCincinnati, OH 45236",
     "property_price": "$133,000.00",
     "interest_rate": "4.875%"
   },
@@ -291,7 +291,7 @@
     "first_owner": "CHARLOTTE A RUGANI",
     "second_owner": null,
     "property_address": "11813",
-    "mailing_address": null,
+    "mailing_address": "11813 Loganfield Court\nCincinnati, OH 45249",
     "property_price": null,
     "interest_rate": "4.34%"
   },
@@ -299,7 +299,7 @@
     "first_owner": "DANIELLE LIEBER AS HEIR",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "7431 Buena Vista Drive\n\nCleves, OH 45002",
     "property_price": null,
     "interest_rate": "4.5%"
   },
@@ -315,7 +315,7 @@
     "first_owner": "CHASSIDY N SIMOS",
     "second_owner": null,
     "property_address": "4517 LAWRENCE STREET, CINCINNATI, OH 45217",
-    "mailing_address": null,
+    "mailing_address": "4517 Lawrence Street\nCincinnati, OH 45217",
     "property_price": null,
     "interest_rate": "3.5%"
   },
@@ -323,7 +323,7 @@
     "first_owner": "CHARLES A SMITH",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "11475 Fiesta Court\nCincinnati, OH 45240",
     "property_price": null,
     "interest_rate": null
   },
@@ -355,7 +355,7 @@
     "first_owner": "JENEL CAPRICE CARSON",
     "second_owner": null,
     "property_address": "1789 Crest Hill Ave, Cincinnati, OH 45237",
-    "mailing_address": null,
+    "mailing_address": "1789 Crest Hill Ave\nCincinnati, OH 45237",
     "property_price": null,
     "interest_rate": null
   },
@@ -371,7 +371,7 @@
     "first_owner": "DANIEL P NEISS",
     "second_owner": null,
     "property_address": "5958 Lester Rd, Cincinnati, OH 45213-1608",
-    "mailing_address": null,
+    "mailing_address": "1708 Vander Ridge Lane\nKnoxville, TN 37919",
     "property_price": "$132,000.00",
     "interest_rate": "2.75%"
   },
@@ -379,7 +379,7 @@
     "first_owner": "UNKNOWN SPOUSE OF",
     "second_owner": null,
     "property_address": "25 GLENWOOD AVE, CINCINNATI, OHIO 45217",
-    "mailing_address": null,
+    "mailing_address": "25 Glenwood Ave\nCincinnati, OH 45217",
     "property_price": "$60,000.00",
     "interest_rate": "9.350%"
   },
@@ -411,7 +411,7 @@
     "first_owner": "STEFANIE WUKUSICK",
     "second_owner": null,
     "property_address": "511 Hibernia Dr, Cincinnati, OHIO 45238",
-    "mailing_address": null,
+    "mailing_address": "511 Hibernia Drive\nCincinnati, OH 45238",
     "property_price": "$105,718.00",
     "interest_rate": "4.000%"
   },
@@ -419,7 +419,7 @@
     "first_owner": "LANAME J JONES",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "877 Hutchins Avenue\nCincinnati, OH 45229",
     "property_price": "$143,955.15",
     "interest_rate": "4.56%"
   },
@@ -435,7 +435,7 @@
     "first_owner": "SOLAR ADVANTAGE",
     "second_owner": null,
     "property_address": "3140 Beekman Street, Cincinnati, Ohio 45223",
-    "mailing_address": null,
+    "mailing_address": "4.6(c) or\n(d) and 4.6(e), an ordinary mail waiver is\nv. requested\nSOLAR ADVANTAGE, LLC\nNorthbrook, 1. 60062",
     "property_price": null,
     "interest_rate": "3.00%"
   },
@@ -443,7 +443,7 @@
     "first_owner": "OREN D LIVENGOOD",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "2350 Washington Avenue In Rem\nCincinnati, OH 45231",
     "property_price": null,
     "interest_rate": "5.00%"
   },
@@ -467,7 +467,7 @@
     "first_owner": "BRICE HAILE",
     "second_owner": null,
     "property_address": "8569 BOBOLINK AVE, CINCINNATI, OHIO 45231",
-    "mailing_address": null,
+    "mailing_address": "10228 Springbeauty Lane\nCincinnati, OH 45231",
     "property_price": "$152,218.00",
     "interest_rate": "5.75%"
   },
@@ -475,7 +475,7 @@
     "first_owner": "SULEMEN MUNEEB",
     "second_owner": null,
     "property_address": "759 Danbury Rd, Cincinnati, OH 45240",
-    "mailing_address": null,
+    "mailing_address": "759 Danbury Road\nCincinnati, OH 45240",
     "property_price": "$163,674.23",
     "interest_rate": "3.375%"
   },
@@ -483,7 +483,7 @@
     "first_owner": "TONA SIMS",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "2197 Shasta PI.\nCincinnati, Ohio 45211",
     "property_price": "$86,367.31",
     "interest_rate": "5.00000%"
   },
@@ -491,7 +491,7 @@
     "first_owner": "TONJA L ARNOLD AKA",
     "second_owner": null,
     "property_address": "183 FIRST ST, ADDYSTON, OHIO 45001-0000",
-    "mailing_address": null,
+    "mailing_address": "183 First Street 0345-00\n\nAddyston, Ohio 45001",
     "property_price": "$80,860.00",
     "interest_rate": "4.12500%"
   },
@@ -499,7 +499,7 @@
     "first_owner": "ROBERT MARSHALL JR",
     "second_owner": null,
     "property_address": "4919 Andrew Street, Cincinnati, OH 45217",
-    "mailing_address": null,
+    "mailing_address": "4919 Andrew St\nCincinnati, OH 45217",
     "property_price": "$88,271.00",
     "interest_rate": null
   },
@@ -515,7 +515,7 @@
     "first_owner": "BELINDA FOLSOM",
     "second_owner": null,
     "property_address": "543 Glenwood Avenue, Cincinnati, Ohio 45229",
-    "mailing_address": null,
+    "mailing_address": "04920115-1\n\nE-FILED 08/28/2023 8:51 AM / CONFIRMATION 13625",
     "property_price": null,
     "interest_rate": null
   },
@@ -547,7 +547,7 @@
     "first_owner": "KIMBERLY N ARMSTRONG",
     "second_owner": null,
     "property_address": "10133 Leacrest Rd, Cincinnati, OH 45215",
-    "mailing_address": null,
+    "mailing_address": "10133 Leacrest Road\nCincinnati, OH 45215",
     "property_price": "$164,536.71",
     "interest_rate": "3.50%"
   },
@@ -579,7 +579,7 @@
     "first_owner": "JAIME WARREN",
     "second_owner": null,
     "property_address": "3021 Boudinot Ave, Cincinnati, OH 45236",
-    "mailing_address": null,
+    "mailing_address": "3021 Boudinot Ave\nCincinnati, OH 45238",
     "property_price": null,
     "interest_rate": null
   },
@@ -595,7 +595,7 @@
     "first_owner": "JASON S REINHARDT",
     "second_owner": null,
     "property_address": "62 Ridge Avenue, Cleves, OH 45002",
-    "mailing_address": null,
+    "mailing_address": "572-8-166\nJason S. Reinhardt\n62 Ridge Ave\nCleves, OH 45002",
     "property_price": "$78,318.73",
     "interest_rate": "3.875%"
   },
@@ -603,7 +603,7 @@
     "first_owner": "ACCENTI TECH SOLUTION",
     "second_owner": null,
     "property_address": "2457 Aldermont Court, Cincinnati, Ohio 45239",
-    "mailing_address": null,
+    "mailing_address": "3963 Brandenburg Lane\n\nCincinnati, Ohio 45213",
     "property_price": null,
     "interest_rate": null
   }
