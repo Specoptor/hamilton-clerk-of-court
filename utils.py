@@ -223,7 +223,7 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
     :param pages: list of text of each text of the pdf.
     :return: a dictionary containing the datapoints.
     """
-    pdf_text = '\n'.join(pages)
+    pdf_text = ' '.join(pages)
 
     def first_owner(text: str = pages[0]) -> str | None:
         """
@@ -255,22 +255,31 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         Extract the second owner name from the second page.
 
         Regex explanation:
-            \d{5}(?:-\d{4})?\s*:
-            This part matches a 5-digit zipcode optionally followed by a hyphen and a 4-digit extension,
-            followed by any amount of whitespace.
+            1. First check for the absence of a second owner using the re.search function to look for
+            "JOHN DOE", "JANE DOE", or "HEIR" in the text. If any of these strings are found,
+            None is returned, indicating no second owner.
 
-            ([\w\s]+?)\s*\n:
-            This part captures one or more word characters or spaces (non-greedily),
-            followed by any amount of whitespace and a newline character. This should capture the second owner name,
-            as it appears on a new line immediately after the zipcode.
+            2. If none of these strings are found, the function attempts to extract the second owner's name using the
+             re.search function with a regex pattern:
+
+                i. (?:\d{5}(?:-\d{4})?.*\n){1,2}: This part of the pattern attempts to match the address block,
+                which may span one or two lines, ending with a newline character \n.
+
+                ii. ([A-Z\s]+)\n\d+: This part of the pattern captures the second owner's name, which is assumed to be
+                 uppercase letters possibly separated by spaces, followed by a newline character \n and the beginning
+                 of another address block (or parcel number).
 
         :param text: second page text of the pdf by default
         :return: second owner name if found else None
         """
-        pattern = re.compile(r'\d{5}(?:-\d{4})?\s*([\w\s]+?)\s*\n', re.MULTILINE)
-        match = pattern.search(text)
+        # Check for conditions where there is no second owner
+        if re.search(r'\b(JOHN DOE|JANE DOE|HEIR|UNKNOWN SPOUSE)\b', text, re.IGNORECASE):
+            return None
+
+        # Try to match a common pattern for the second owner's name
+        match = re.search(r'(?:\d{5}(?:-\d{4})?.*\n){1,2}([A-Z\s]+)\n\d+', text, re.MULTILINE)
         if match:
-            return match.group(1)
+            return match.group(1).strip()
         return None
 
     def property_address(text: str = pdf_text) -> str | None:
