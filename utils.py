@@ -388,44 +388,80 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
 
     def property_price(text: str = pdf_text) -> str | None:
         """
-        Extract the first price appearing before the interest rate.
+        Extract the first price appearing before the interest rate, or the dollar amount
+        immediately following "LOAN AMOUNT" or "Principal Amount" if the previous patterns
+        didn't find a match.
 
         Regex Explanation:
-            (\$[\d,]+(?:\.\d{2})?):
-            This is the capturing group for the dollar amount.
+            Interest Rate Match:
+                (\$[\d,]+(?:\.\d{2})?)(?=.*?\d+\.\d+%):
+                This pattern looks for a dollar amount followed by an interest rate.
 
-            \$:
-            Matches the dollar sign.
+                \$:
+                Matches the dollar sign symbol.
 
-            [\d,]+:
-            Matches one or more digits or commas.
+                [\d,]+:
+                Matches one or more digits or commas.
 
-            (?:\.\d{2})?:
-            Matches the optional decimal part. ?: makes the group non-capturing
+                (?:\.\d{2})?:
+                This is a non-capturing group that matches a decimal point followed by two digits, made optional by the trailing ?.
 
-            \.\d{2}:
-            matches a decimal point followed by exactly two digits
+                (?=.*?\d+\.\d+%):
+                This is a positive lookahead assertion that ensures the dollar amount is followed by an interest rate,
+                without including the interest rate in the match.
 
-            ?:
-            makes the decimal part optional.
+                .*?:
+                This part matches any character (except for a newline) zero or more times,
+                but as few times as possible to satisfy the pattern (non-greedy match).
 
-            (?=.*?\d+\.\d+%):
-            This is a positive lookahead assertion to ensure the dollar amount appears before the interest rate.
+                \d+\.\d+%:
+                This part matches the interest rate pattern: one or more digits, a decimal point, one or more digits,
+                and a percentage sign.
 
-            .*?:
-            Matches any characters (non-greedy) between the dollar amount and the interest rate.
+            New Pattern 1:
+                LOAN AMOUNT\s*:\s*(\$[\d,]+(?:\.\d{2})?):
+                This pattern looks for the phrase "LOAN AMOUNT" followed by a dollar amount.
 
-            \d+\.\d+%:
-            Matches the interest rate pattern
-            (one or more digits, a decimal point, one or more digits, and a percentage sign).
+                LOAN AMOUNT\s*:\s*:
+                Matches the phrase "LOAN AMOUNT" followed by any amount of whitespace, a colon,
+                and any amount of whitespace.
+
+                (\$[\d,]+(?:\.\d{2})?):
+                This is the capturing group for the dollar amount, with the same structure as
+                in the initial pattern.
+
+            New Pattern 2:
+                Principal Amount\s*:\s*(\$[\d,]+(?:\.\d{2})?):
+                This pattern looks for the phrase "Principal Amount" followed by a dollar amount.
+
+                Principal Amount\s*:\s*:
+                Matches the phrase "Principal Amount" followed by any amount of whitespace, a colon,
+                and any amount of whitespace.
+
+                (\$[\d,]+(?:\.\d{2})?):
+                This is the capturing group for the dollar amount, with the same structure as
+                in the initial and new pattern 1.
 
         :param text: defaults to the entire pdf text
         :return: property price if found else None
         """
-        pattern = re.compile(r'(\$[\d,]+(?:\.\d{2})?)(?=.*?\d+\.\d+%)')
-        match = pattern.search(text)
-        if match:
-            return match.group(1)
+        # New pattern to match "LOAN AMOUNT" followed by a dollar amount
+        new_pattern1 = re.compile(r'LOAN AMOUNT\s*:\s*(\$[\d,]+(?:\.\d{2})?)', re.IGNORECASE)
+        new_match1 = new_pattern1.search(text)
+        if new_match1:
+            return new_match1.group(1)
+
+        # Additional pattern to match "Principal Amount" followed by a dollar amount
+        new_pattern2 = re.compile(r'Principal Amount\s*:\s*(\$[\d,]+(?:\.\d{2})?)', re.IGNORECASE)
+        new_match2 = new_pattern2.search(text)
+        if new_match2:
+            return new_match2.group(1)
+
+        preceding_interest_rate_pattern = re.compile(r'(\$[\d,]+(?:\.\d{2})?)(?=.*?\d+\.\d+%)')
+        preceding_interest_rate_match = preceding_interest_rate_pattern.search(text)
+        if preceding_interest_rate_match:
+            return preceding_interest_rate_match.group(1)
+
         return None
 
     def interest_rate(text: str = pdf_text) -> str | None:
