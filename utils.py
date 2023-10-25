@@ -144,7 +144,7 @@ def extract_text_from_pdf(pdf_path: str) -> list[str]:
     :param pdf_path: path to pdf file.
     :return:
     """
-    images = convert_from_path(pdf_path, dpi=300)
+    images = convert_from_path(pdf_path, dpi=150)
 
     # Initialize an empty string to store the OCR results
     pages = []
@@ -172,6 +172,21 @@ def add_poppler_bin_to_path() -> None:
     os.environ["PATH"] += os.pathsep + poppler_path
 
 
+def process_pdf(pdf_path: str) -> list[str]:
+    """
+    Extract text from the given PDF filepath
+
+    :param pdf_path: path to pdf file.
+    :return: parsed pdf content.
+    """
+    directory_path = initial_docs_directory()
+    if pdf_path.endswith(".pdf"):
+        pdf_path = os.path.join(directory_path, pdf_path)
+        return extract_text_from_pdf(pdf_path)
+    else:
+        return []
+
+
 def process_directory(directory_path: str | None = None) -> dict[str, list[str]]:
     """
     Extract text from all PDF files in the given directory.
@@ -184,9 +199,7 @@ def process_directory(directory_path: str | None = None) -> dict[str, list[str]]
     directory_path = directory_path or initial_docs_directory()
     texts = {}
     for filename in os.listdir(directory_path):
-        if filename.endswith(".pdf"):
-            pdf_path = os.path.join(directory_path, filename)
-            texts[filename.split('_')[0]] = extract_text_from_pdf(pdf_path)
+        texts[filename.split('_')[0]] = process_pdf(filename)
 
     # save the pdfs to json file if all pdfs processed successfully.
     if len(texts) == len(os.listdir(directory_path)):
@@ -242,22 +255,31 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         Extract the second owner name from the second page.
 
         Regex explanation:
-            \d{5}(?:-\d{4})?\s*:
-            This part matches a 5-digit zipcode optionally followed by a hyphen and a 4-digit extension,
-            followed by any amount of whitespace.
+            1. First check for the absence of a second owner using the re.search function to look for
+            "JOHN DOE", "JANE DOE", or "HEIR" in the text. If any of these strings are found,
+            None is returned, indicating no second owner.
 
-            ([\w\s]+?)\s*\n:
-            This part captures one or more word characters or spaces (non-greedily),
-            followed by any amount of whitespace and a newline character. This should capture the second owner name,
-            as it appears on a new line immediately after the zipcode.
+            2. If none of these strings are found, the function attempts to extract the second owner's name using the
+             re.search function with a regex pattern:
+
+                i. (?:\d{5}(?:-\d{4})?.*\n){1,2}: This part of the pattern attempts to match the address block,
+                which may span one or two lines, ending with a newline character \n.
+
+                ii. ([A-Z\s]+)\n\d+: This part of the pattern captures the second owner's name, which is assumed to be
+                 uppercase letters possibly separated by spaces, followed by a newline character \n and the beginning
+                 of another address block (or parcel number).
 
         :param text: second page text of the pdf by default
         :return: second owner name if found else None
         """
-        pattern = re.compile(r'\d{5}(?:-\d{4})?\s*([\w\s]+?)\s*\n', re.MULTILINE)
-        match = pattern.search(text)
+        # Check for conditions where there is no second owner
+        if re.search(r'\b(JOHN DOE|JANE DOE|HEIR|UNKNOWN SPOUSE)\b', text, re.IGNORECASE):
+            return None
+
+        # Try to match a common pattern for the second owner's name
+        match = re.search(r'(?:\d{5}(?:-\d{4})?.*\n){1,2}([A-Z\s]+)\n\d+', text, re.MULTILINE)
         if match:
-            return match.group(1)
+            return match.group(1).strip()
         return None
 
     def property_address(text: str = pdf_text) -> str | None:
@@ -265,32 +287,75 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         Extract the property address from the entire pdf text.
 
         Regex Explanation:
-            \s*:
-            This part matches the text "property address:" (case-insensitively due to re.IGNORECASE) followed by
-            any amount of whitespace (\s*).
+            - General:
+                \s*:
+                This part matches any amount of whitespace (\s*).
 
-            (.*?\d{5}(?:-\d{4})?):
-            This part captures everything from the text following "property address:"
-            up to the zipcode.
+            - Pattern1:
+                property address:\s*(.*?\d{5}(?:-\d{4})?):
+                This pattern is designed to capture the text following "property address:" up to the zipcode.
 
-            .*?:
-            This part matches any character (except for a newline) zero or more times,
-            but as few times as necessary to satisfy the pattern (non-greedy match).
+                .*?:
+                This part matches any character (except for a newline) zero or more times,
+                but as few times as necessary to satisfy the pattern (non-greedy match).
 
-            \d{5}(?:-\d{4})?:
-            This part matches a 5-digit zipcode followed optionally by a hyphen and
-            a 4-digit extension.
+                \d{5}(?:-\d{4})?:
+                This part matches a 5-digit zipcode followed optionally by a hyphen and
+                a 4-digit extension.
 
-            The ?: within the parentheses indicates a non-capturing group, so that the ? repetition applies to the
-            entire group (-\d{4}), and not just the last digit.
+                The ?: within the parentheses indicates a non-capturing group, so that the ? repetition applies to the
+                entire group (-\d{4}), and not just the last digit.
+
+            - Pattern2:
+                Property Address:\s*((?:.|\n)+?)(?=\n\n|\Z|\n[a-zA-Z]):
+                This pattern is designed to capture the text following "Property Address:" up to either two newline characters,
+                the end of the text, or a newline followed by a letter.
+
+                (?:.|\n)+?:
+                This part matches any character or newline, one or more times, but as few times as necessary to
+                satisfy the pattern (non-greedy match). The ?: indicates a non-capturing group.
+
+                (?=\n\n|\Z|\n[a-zA-Z]):
+                This is a positive lookahead assertion. It requires the text following the captured group to either be
+                two newline characters, the end of the text (\Z), or a newline followed by a letter, without including
+                this text in the captured group.
 
         :param text: defaults to the entire pdf text
         :return: property address if found else None
         """
-        pattern = re.compile(r'property address:\s*(.*?\d{5}(?:-\d{4})?)', re.IGNORECASE)
-        match = pattern.search(text)
-        if match:
-            return match.group(1)
+        # Split the text by the '[Property Address]' marker
+        parts = text.split('[Property Address]')
+        if len(parts) >= 2:
+            # Get the portion of text before the '[Property Address]' marker
+            preceding_text = parts[0].strip()
+            # Split the preceding text into lines and reverse the order so we examine lines from bottom to top
+            lines = preceding_text.split('\n')[::-1]
+            # Initialize an empty string to hold the address
+            address = ''
+            # Iterate over up to the first 3 lines preceding the marker, stopping when a zipcode is found
+            for i, line in enumerate(lines[:3]):
+                # Prepend the current line to the address string
+                address = line.strip() + ', ' + address if address else line.strip()
+                # If a zipcode pattern is found in the address, return the address
+                if re.search(r'\d{5}(?:-\d{4})?$', address):
+                    if address.startswith("Cincinnati, OH"):
+                        # append the preceding line
+                        address = lines[i + 1].strip() + ', ' + address
+                    return address
+
+        pattern1 = re.compile(r'property address:\s*(.*?\d{5}(?:-\d{4})?)', re.IGNORECASE)
+        match1 = pattern1.search(text)
+        if match1 and not match1.group(1).startswith("1. BORROWER'S"):
+            address = match1.group(1)
+            return address
+
+        pattern2 = re.compile(r'Property Address:\s*((?:.|\n)+?)(?=\n\n|\Z|\n[a-zA-Z])', re.IGNORECASE | re.DOTALL)
+        match2 = pattern2.search(text)
+        if match2:
+            address = match2.group(1).strip().replace('\n', ', ')
+            address = re.sub(r'\s+', ' ', address).strip()
+            return address
+
         return None
 
     def mailing_address(text: str = pages[1]) -> str | None:
@@ -298,90 +363,122 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         Extract the mailing address from the text.
 
         Regex Explanation:
-            —\s*vs-:
-            This part of the pattern matches the literal characters '— vs-' in the text, with any amount of whitespace
-            (\s*) between the characters.
+            1. (?i:Plaintiff).*?:
+            This part of the pattern uses a case-insensitive flag (?i:...) to match the word "Plaintiff" in any case,
+            followed by any characters (non-greedy) up to the address block.
 
-            [\s\S]*?:
-            [\s\S] is a character class that matches any character, including newlines: \s
-            matches any whitespace character, and \S matches any non-whitespace character.
-            Together, [\s\S] matches any character.
+            2. (?:\b\d{3}-\d{4}-\d{4}-\d{2}\b|PARCEL NUMBER:.*?\n|Parcel No\..*?\n)?:
+            This part of the pattern is a non-capturing group that optionally matches parcel numbers in the specified
+            format or the string "PARCEL NUMBER:" or "Parcel No." followed by any characters up to a newline.
 
-            *?:
-            is a non-greedy qualifier that matches 0 or more occurrences of the preceding character class,
-            but as few as necessary to allow the rest of the pattern to match. This part of the pattern essentially
-            skips over any characters following '— vs-' until it reaches a pattern that looks like a street address.
+            3. (\d+.*?\d{5}):
+            This part of the pattern captures the address block.
 
-            \n:
-            This part of the pattern matches a newline character, ensuring that the address capture starts at the
-            beginning of a new line.
-
-            (\d+\s[\s\S]+?\d{5}(?:-\d{4})?):
-            This is the capturing group that matches and captures the mailing address.
-
-            \d+\s:
-                \d+ matches one or more digits, which is typical for the street number at the beginning of an address.
-                \s matches a single whitespace character following the street number.
-
-            [\s\S]+?:
-                [\s\S] matches any character, and +? is a non-greedy qualifier that matches 1 or more occurrences of the
-                preceding character class, but as few as necessary to allow the rest of the pattern to match.
-
-            \d{5}(?:-\d{4})?:
-                \d{5} matches exactly 5 digits, which is typical for a zipcode.
-                (?:-\d{4})? is an optional non-capturing group that matches a hyphen followed by exactly 4 digits,
-                which is typical for the 4-digit extension of a 9-digit zipcode. The ? makes this group optional,
-                allowing for either 5-digit or 9-digit zipcodes.
+                i. \d+: matches the first digit sequence which typically starts an address.
+                ii. .*?: matches any characters (non-greedy) until the zip code.
+                iii. \d{5}: matches the 5-digit zip code.
 
         :param text: defaults to the second page.
         :return: mailing address if found else None
         """
-        pattern = re.compile(r'—\s*vs-[\s\S]*?\n(\d+\s[\s\S]+?\d{5}(?:-\d{4})?)', re.MULTILINE)
-        match = pattern.search(text)
-        if match:
-            return match.group(1)
+        pattern_1 = re.compile(r'[A-Z\s]+\n((?:\d+.*\n)+[A-Z\s]+,\s+[A-Z]+\s+\d{5}(?:-\d{4})?)', re.MULTILINE)
+        match_1 = pattern_1.search(text)
+        if match_1:
+            address = match_1.group(1).strip()
+            return address
+
+        pattern_2 = re.compile(
+            r'(?i:Plaintiff).*?(?:\b\d{3}-\d{4}-\d{4}-\d{2}\b|PARCEL NUMBER:.*?\n|Parcel No\..*?\n)?(\d+.*?\d{5})',
+            re.MULTILINE | re.DOTALL)
+        match_2 = pattern_2.search(text)
+        if match_2:
+            address = match_2.group(1).strip()
+            # Check if the address block contains a parcel number pattern and skip to the next address block
+            while re.search(r'\b\d{3}-\d{4}-\d{4}-\d{2}\b', address):
+                match_2 = pattern_2.search(text, match_2.end())
+                if match_2:
+                    address = match_2.group(1).strip()
+                else:
+                    return None  # Exit if no more address blocks are found
+            return address
         return None
 
     def property_price(text: str = pdf_text) -> str | None:
         """
-        Extract the first price appearing before the interest rate.
+        Extract the first price appearing before the interest rate, or the dollar amount
+        immediately following "LOAN AMOUNT" or "Principal Amount" if the previous patterns
+        didn't find a match.
 
         Regex Explanation:
-            (\$[\d,]+(?:\.\d{2})?):
-            This is the capturing group for the dollar amount.
+            Interest Rate Match:
+                (\$[\d,]+(?:\.\d{2})?)(?=.*?\d+\.\d+%):
+                This pattern looks for a dollar amount followed by an interest rate.
 
-            \$:
-            Matches the dollar sign.
+                \$:
+                Matches the dollar sign symbol.
 
-            [\d,]+:
-            Matches one or more digits or commas.
+                [\d,]+:
+                Matches one or more digits or commas.
 
-            (?:\.\d{2})?:
-            Matches the optional decimal part. ?: makes the group non-capturing
+                (?:\.\d{2})?:
+                This is a non-capturing group that matches a decimal point followed by two digits, made optional by the trailing ?.
 
-            \.\d{2}:
-            matches a decimal point followed by exactly two digits
+                (?=.*?\d+\.\d+%):
+                This is a positive lookahead assertion that ensures the dollar amount is followed by an interest rate,
+                without including the interest rate in the match.
 
-            ?:
-            makes the decimal part optional.
+                .*?:
+                This part matches any character (except for a newline) zero or more times,
+                but as few times as possible to satisfy the pattern (non-greedy match).
 
-            (?=.*?\d+\.\d+%):
-            This is a positive lookahead assertion to ensure the dollar amount appears before the interest rate.
+                \d+\.\d+%:
+                This part matches the interest rate pattern: one or more digits, a decimal point, one or more digits,
+                and a percentage sign.
 
-            .*?:
-            Matches any characters (non-greedy) between the dollar amount and the interest rate.
+            New Pattern 1:
+                LOAN AMOUNT\s*:\s*(\$[\d,]+(?:\.\d{2})?):
+                This pattern looks for the phrase "LOAN AMOUNT" followed by a dollar amount.
 
-            \d+\.\d+%:
-            Matches the interest rate pattern
-            (one or more digits, a decimal point, one or more digits, and a percentage sign).
+                LOAN AMOUNT\s*:\s*:
+                Matches the phrase "LOAN AMOUNT" followed by any amount of whitespace, a colon,
+                and any amount of whitespace.
+
+                (\$[\d,]+(?:\.\d{2})?):
+                This is the capturing group for the dollar amount, with the same structure as
+                in the initial pattern.
+
+            New Pattern 2:
+                Principal Amount\s*:\s*(\$[\d,]+(?:\.\d{2})?):
+                This pattern looks for the phrase "Principal Amount" followed by a dollar amount.
+
+                Principal Amount\s*:\s*:
+                Matches the phrase "Principal Amount" followed by any amount of whitespace, a colon,
+                and any amount of whitespace.
+
+                (\$[\d,]+(?:\.\d{2})?):
+                This is the capturing group for the dollar amount, with the same structure as
+                in the initial and new pattern 1.
 
         :param text: defaults to the entire pdf text
         :return: property price if found else None
         """
-        pattern = re.compile(r'(\$[\d,]+(?:\.\d{2})?)(?=.*?\d+\.\d+%)')
-        match = pattern.search(text)
-        if match:
-            return match.group(1)
+        # New pattern to match "LOAN AMOUNT" followed by a dollar amount
+        new_pattern1 = re.compile(r'LOAN AMOUNT\s*:\s*(\$[\d,]+(?:\.\d{2})?)', re.IGNORECASE)
+        new_match1 = new_pattern1.search(text)
+        if new_match1:
+            return new_match1.group(1)
+
+        # Additional pattern to match "Principal Amount" followed by a dollar amount
+        new_pattern2 = re.compile(r'Principal Amount\s*:\s*(\$[\d,]+(?:\.\d{2})?)', re.IGNORECASE)
+        new_match2 = new_pattern2.search(text)
+        if new_match2:
+            return new_match2.group(1)
+
+        preceding_interest_rate_pattern = re.compile(r'(\$[\d,]+(?:\.\d{2})?)(?=.*?\d+\.\d+%)')
+        preceding_interest_rate_match = preceding_interest_rate_pattern.search(text)
+        if preceding_interest_rate_match:
+            return preceding_interest_rate_match.group(1)
+
         return None
 
     def interest_rate(text: str = pdf_text) -> str | None:
