@@ -363,27 +363,44 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         Extract the mailing address from the text.
 
         Regex Explanation:
-           1. [A-Z\s]+\n:
-           This part of the pattern matches the first owner's name, which is assumed to be uppercase letters
-           possibly separated by spaces, followed by a newline character \n.
+            1. (?i:Plaintiff).*?:
+            This part of the pattern uses a case-insensitive flag (?i:...) to match the word "Plaintiff" in any case,
+            followed by any characters (non-greedy) up to the address block.
 
-           2. ((?:\d+.*\n)+[A-Z\s]+,\s+[A-Z]+\s+\d{5}(?:-\d{4})?): This is the capturing group for the mailing address.
+            2. (?:\b\d{3}-\d{4}-\d{4}-\d{2}\b|PARCEL NUMBER:.*?\n|Parcel No\..*?\n)?:
+            This part of the pattern is a non-capturing group that optionally matches parcel numbers in the specified
+            format or the string "PARCEL NUMBER:" or "Parcel No." followed by any characters up to a newline.
 
-                i. (?:\d+.*\n)+: This part of the pattern matches the street address, which may span multiple lines,
-                each starting with one or more digits (\d+), followed by any characters (.*), and ending
-                with a newline character \n.
+            3. (\d+.*?\d{5}):
+            This part of the pattern captures the address block.
 
-                ii. [A-Z\s]+,\s+[A-Z]+\s+\d{5}(?:-\d{4})?: This part of the pattern matches the city, state, and
-                zip code. [A-Z\s]+ matches the city name, \s+[A-Z]+\s+ matches the state abbreviation, and \d{5}
-                (?:-\d{4})? matches the 5-digit or 9-digit zip code.
+                i. \d+: matches the first digit sequence which typically starts an address.
+                ii. .*?: matches any characters (non-greedy) until the zip code.
+                iii. \d{5}: matches the 5-digit zip code.
 
         :param text: defaults to the second page.
         :return: mailing address if found else None
         """
-        pattern = re.compile(r'[A-Z\s]+\n((?:\d+.*\n)+[A-Z\s]+,\s+[A-Z]+\s+\d{5}(?:-\d{4})?)', re.MULTILINE)
-        match = pattern.search(text)
-        if match:
-            return match.group(1)
+        pattern_1 = re.compile(r'[A-Z\s]+\n((?:\d+.*\n)+[A-Z\s]+,\s+[A-Z]+\s+\d{5}(?:-\d{4})?)', re.MULTILINE)
+        match_1 = pattern_1.search(text)
+        if match_1:
+            address = match_1.group(1).strip()
+            return address
+
+        pattern_2 = re.compile(
+            r'(?i:Plaintiff).*?(?:\b\d{3}-\d{4}-\d{4}-\d{2}\b|PARCEL NUMBER:.*?\n|Parcel No\..*?\n)?(\d+.*?\d{5})',
+            re.MULTILINE | re.DOTALL)
+        match_2 = pattern_2.search(text)
+        if match_2:
+            address = match_2.group(1).strip()
+            # Check if the address block contains a parcel number pattern and skip to the next address block
+            while re.search(r'\b\d{3}-\d{4}-\d{4}-\d{2}\b', address):
+                match_2 = pattern_2.search(text, match_2.end())
+                if match_2:
+                    address = match_2.group(1).strip()
+                else:
+                    return None  # Exit if no more address blocks are found
+            return address
         return None
 
     def property_price(text: str = pdf_text) -> str | None:
