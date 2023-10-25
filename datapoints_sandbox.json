@@ -10,7 +10,7 @@
   "A2303247": {
     "first_owner": "SHANNON M COLEMAN",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "1127 Imprint Lone, Cincinnati, OH 45240",
     "mailing_address": "1127 IMPRINT LANE :\nCINCINNATI, OH 45240",
     "property_price": "$129,339.14",
     "interest_rate": "4.8750%"
@@ -18,7 +18,7 @@
   "A2303249": {
     "first_owner": "BRITTANY M MOTLEY",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "410 Carrington Lane,, : Unit 310, Loveland, Ohio 45140",
     "mailing_address": null,
     "property_price": null,
     "interest_rate": null
@@ -26,7 +26,7 @@
   "A2303250": {
     "first_owner": "GREGORY HAMILTON",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "579 DEERFIELD DR, Harrison, OH 45030",
     "mailing_address": null,
     "property_price": "$389.81",
     "interest_rate": "3.875%"
@@ -66,7 +66,7 @@
   "A2303260": {
     "first_owner": "MARGARET L BAIRD",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "3535 Amberway Court,, : Cincinnati, Ohio 45251",
     "mailing_address": null,
     "property_price": null,
     "interest_rate": null
@@ -114,7 +114,7 @@
   "A2303304": {
     "first_owner": "CAROLYN KING",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "2488 DUNAWAY CT, CINCINNATI, OH 45238",
     "mailing_address": null,
     "property_price": "$70,992.60",
     "interest_rate": "4.250%"
@@ -138,7 +138,7 @@
   "A2303319": {
     "first_owner": "DEBORAH J STROHOFER",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "3950 Olde Savannah Drive, Unit 9",
     "mailing_address": null,
     "property_price": null,
     "interest_rate": null
@@ -162,7 +162,7 @@
   "A2303351": {
     "first_owner": "LINDA A OLEARY",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "410 Carrington Lane,, : Unit 102, Loveland, Ohio 45140",
     "mailing_address": null,
     "property_price": null,
     "interest_rate": null
@@ -170,7 +170,7 @@
   "A2303352": {
     "first_owner": "HARRISON BUTLER",
     "second_owner": null,
-    "property_address": "3948 HOLMAN CIR, CINCINNATI, OH 45236",
+    "property_address": "3948 HOLMAN CIR, CINCINNATI, OH 45236-3919",
     "mailing_address": null,
     "property_price": null,
     "interest_rate": "0.125%"
@@ -178,7 +178,7 @@
   "A2303358": {
     "first_owner": "JOANN BARCHUE",
     "second_owner": null,
-    "property_address": "3404 Harvey Avenue, Cincinnati, Ohio 45227",
+    "property_address": "3404 HARVEY AVENUE, CINCINNATI, OHIO 45229",
     "mailing_address": null,
     "property_price": null,
     "interest_rate": "3.75%"
@@ -218,7 +218,7 @@
   "A2303398": {
     "first_owner": "LAFE STATON AS HEIR AND",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "12013 MAXIM WAY, SYMMES TWP, OH 45249",
     "mailing_address": null,
     "property_price": null,
     "interest_rate": "3.625%"
@@ -226,7 +226,7 @@
   "A2303421": {
     "first_owner": "LARRY D HARRIS",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "8845 Planet Dr, Cincinnati, OH 45231",
     "mailing_address": "8845 PLANET DR\nCINCINNATI, OH 45231",
     "property_price": null,
     "interest_rate": "4.37500%"
@@ -234,7 +234,7 @@
   "A2303425": {
     "first_owner": "THOMAS CHAPMAN JR",
     "second_owner": "TIMOTHY CHAPMAN",
-    "property_address": "1333 CHAMBERLAIN, CINCINNATI, OH 45215",
+    "property_address": "1333 Chamber r| CINCINNATI, OH 45106",
     "mailing_address": null,
     "property_price": "$24,109.91",
     "interest_rate": "7.00000%"
@@ -242,7 +242,7 @@
   "A2303445": {
     "first_owner": "STEVEN B AMUNDSON",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "\u00a7236 Globe Avenue, Cincinnati, OH 45212",
     "mailing_address": "5236 GLOBE AVE Permanent Parcel No: 651-0006-0214-00\n\nCINCINNATI, OH 45212",
     "property_price": "$81,009.06",
     "interest_rate": "3.8750%"
@@ -282,7 +282,7 @@
   "A2303473": {
     "first_owner": "XIN LU",
     "second_owner": null,
-    "property_address": "499 Sandheger Place, Cincinnati, Ohio 45220",
+    "property_address": "499 Sandheger Place, CINCINNATI, OHIO 45220",
     "mailing_address": null,
     "property_price": "$133,000.00",
     "interest_rate": "4.875%"
@@ -306,7 +306,7 @@
   "A2303476": {
     "first_owner": "WILLRUDALE UNDERWOOD",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "1586 Cresthill Avenue, Cincinnati, OH 45237",
     "mailing_address": null,
     "property_price": "$74,916.78",
     "interest_rate": "3.87500%"
@@ -330,7 +330,7 @@
   "A2303494": {
     "first_owner": "STEPHANIE HOLMES",
     "second_owner": null,
-    "property_address": "404 BONNIE BRAE AVENUE SE, WARREN, OH 44484",
+    "property_address": "404 Bonnie Brae Ave SE, Warren, OH 44484",
     "mailing_address": null,
     "property_price": "$145,687.07",
     "interest_rate": "3.49000%"
@@ -346,7 +346,7 @@
   "A2303501": {
     "first_owner": "GILBERT FARMER",
     "second_owner": null,
-    "property_address": "7887 RAMBLE VIEW UNIT 203, CINCINNATI, OH 45231",
+    "property_address": "7887 Ramble View Unit 203, Cincinnati, OH 45231",
     "mailing_address": "7887 RAMBLE VIEW - UNIT 203 PPN# 590-0201-0404-00 AND 590-\nCINCINNATI, OH 45231",
     "property_price": null,
     "interest_rate": "2.75%"
@@ -354,7 +354,7 @@
   "A2303508": {
     "first_owner": "JENEL CAPRICE CARSON",
     "second_owner": null,
-    "property_address": "1789 Crest Hill Ave Cincinnati, OK 45237",
+    "property_address": "1789 Crest Hill Ave, Cincinnati, OH 45237",
     "mailing_address": null,
     "property_price": null,
     "interest_rate": null
@@ -370,7 +370,7 @@
   "A2303512": {
     "first_owner": "DANIEL P NEISS",
     "second_owner": null,
-    "property_address": "5958 LESTER RD, CINCINNATI, OH 45213-1608",
+    "property_address": "5958 Lester Rd, Cincinnati, OH 45213-1608",
     "mailing_address": null,
     "property_price": "$79,669.34",
     "interest_rate": "2.75%"
@@ -394,7 +394,7 @@
   "A2303523": {
     "first_owner": "RONALD G AYERS",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "9883 Crusader Dr, Cincinnati, OH 45251",
     "mailing_address": "635 WOODWARD AVENUE\nDETROIT, MI 48226",
     "property_price": "$33,881.37",
     "interest_rate": "4.2500%"
@@ -402,7 +402,7 @@
   "A2303530": {
     "first_owner": "HORACE GREELY",
     "second_owner": null,
-    "property_address": "6119 FAIRCREST COURT, CINCINNATI, OH 45224",
+    "property_address": "6119 FAIRCREST CT, CINCINNATI, OH 45224-2601",
     "mailing_address": "6119 FAIRCREST COURT : 236-0001-0156-00\nCINCINNATI, OH 45224",
     "property_price": "$116,123.33",
     "interest_rate": "2.9900%"
@@ -410,7 +410,7 @@
   "A2303534": {
     "first_owner": "STEFANIE WUKUSICK",
     "second_owner": null,
-    "property_address": "511 HIBERNIA DR, CINCINNATI, OH 45238",
+    "property_address": "511 Hibernia Dr, Cincinnati, OHIO 45238",
     "mailing_address": null,
     "property_price": null,
     "interest_rate": "4.000%"
@@ -426,7 +426,7 @@
   "A2303536": {
     "first_owner": "STEVE D MARSH",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "135 GROVE RD, CINCINNATI, OHIO 45215-1303",
     "mailing_address": null,
     "property_price": "$117,936.33",
     "interest_rate": "4.87500%"
@@ -458,7 +458,7 @@
   "A2303583": {
     "first_owner": "RENEE M KALBERG",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "4041 LARCHVIEW DR",
     "mailing_address": "4041 LARCHVIEW DRIVE\nCINCINNATI, OH 45236",
     "property_price": "$61,814.48",
     "interest_rate": "3.8750%"
@@ -466,7 +466,7 @@
   "A2303589": {
     "first_owner": "BRICE HAILE",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "8569 BOBOLINK AVE, CINCINNATI, OHIO 45231",
     "mailing_address": null,
     "property_price": "$151,415.74",
     "interest_rate": "5.75%"
@@ -522,7 +522,7 @@
   "A2303635": {
     "first_owner": "RANDALL SCHNEIDER",
     "second_owner": null,
-    "property_address": "1523 SIDONA LN, CINCINNATI, OHIO 45238",
+    "property_address": "1523 SIPONA LN, CINCINNATI, CH 45235",
     "mailing_address": "1523 SIDONA LN\n\nCINCINNATI, OH 45238",
     "property_price": "$66,685.37",
     "interest_rate": "4.25%"
@@ -538,7 +538,7 @@
   "A2303678": {
     "first_owner": "LETHA M CHASTAIN",
     "second_owner": null,
-    "property_address": "10 Oakwood Court, CINCINNATI, Ohio 45246",
+    "property_address": "10 OAKWOOD COURT, CINCINNATI, OH 45246",
     "mailing_address": "10 OAKWOOD CT\nCINCINNATI, OH 45246",
     "property_price": null,
     "interest_rate": "3.62500%"
@@ -546,7 +546,7 @@
   "A2303680": {
     "first_owner": "KIMBERLY N ARMSTRONG",
     "second_owner": null,
-    "property_address": "10133",
+    "property_address": "10133 Leacrest Rd, Cincinnati, OH 45215",
     "mailing_address": null,
     "property_price": "$164,536.71",
     "interest_rate": "3.50%"
@@ -562,7 +562,7 @@
   "A2303698": {
     "first_owner": "LYNDA C DEITSCH",
     "second_owner": null,
-    "property_address": "1199 W Seymour Ave, Cincinnati, OH 45216-1839",
+    "property_address": "1199 W SEYMOUR AVE, CINCINNATI, OH 45216-1839",
     "mailing_address": null,
     "property_price": null,
     "interest_rate": null
@@ -578,7 +578,7 @@
   "A2303710": {
     "first_owner": "JAIME WARREN",
     "second_owner": null,
-    "property_address": null,
+    "property_address": "3021 Boudinot Ave, Cincinnati, OH 45236",
     "mailing_address": null,
     "property_price": null,
     "interest_rate": null
