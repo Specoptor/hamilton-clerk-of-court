@@ -406,8 +406,8 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
     def property_price(text: str = pdf_text) -> str | None:
         """
         Extract the first price appearing before the interest rate, or the dollar amount
-        immediately following "LOAN AMOUNT" or "Principal Amount" if the previous patterns
-        didn't find a match.
+        immediately following "LOAN AMOUNT" or "Principal Amount" or "original amount"
+        if the previous patterns didn't find a match.
 
         Regex Explanation:
             Interest Rate Match:
@@ -459,6 +459,16 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
                 This is the capturing group for the dollar amount, with the same structure as
                 in the initial and new pattern 1.
 
+            New Pattern 3:
+                (?i:original amount).*?(\$[\d,]+(?:\.\d{2})?):
+                This pattern looks for the phrase "original amount" (case-insensitive) followed by a dollar amount.
+
+                (?i:original amount).*?:
+                Matches the phrase "original amount" followed by any characters (non-greedy) up to the dollar amount.
+
+                (\$[\d,]+(?:\.\d{2})?):
+                This is the capturing group for the dollar amount, with the same structure as in the initial pattern and new patterns 1 and 2.
+
         :param text: defaults to the entire pdf text
         :return: property price if found else None
         """
@@ -478,6 +488,12 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         preceding_interest_rate_match = preceding_interest_rate_pattern.search(text)
         if preceding_interest_rate_match:
             return preceding_interest_rate_match.group(1)
+
+        # Extract the first dollar amount appearing after the original amount
+        new_pattern3 = re.compile(r'(?i:original amount).*?(\$[\d,]+(?:\.\d{2})?)', re.IGNORECASE)
+        new_match3 = new_pattern3.search(text)
+        if new_match3:
+            return new_match3.group(1)
 
         return None
 
