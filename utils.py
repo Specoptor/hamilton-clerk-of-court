@@ -320,45 +320,24 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         Extract the mailing address from the text.
 
         Regex Explanation:
-            —\s*vs-:
-            This part of the pattern matches the literal characters '— vs-' in the text, with any amount of whitespace
-            (\s*) between the characters.
+           1. [A-Z\s]+\n:
+           This part of the pattern matches the first owner's name, which is assumed to be uppercase letters
+           possibly separated by spaces, followed by a newline character \n.
 
-            [\s\S]*?:
-            [\s\S] is a character class that matches any character, including newlines: \s
-            matches any whitespace character, and \S matches any non-whitespace character.
-            Together, [\s\S] matches any character.
+           2. ((?:\d+.*\n)+[A-Z\s]+,\s+[A-Z]+\s+\d{5}(?:-\d{4})?): This is the capturing group for the mailing address.
 
-            *?:
-            is a non-greedy qualifier that matches 0 or more occurrences of the preceding character class,
-            but as few as necessary to allow the rest of the pattern to match. This part of the pattern essentially
-            skips over any characters following '— vs-' until it reaches a pattern that looks like a street address.
+                i. (?:\d+.*\n)+: This part of the pattern matches the street address, which may span multiple lines,
+                each starting with one or more digits (\d+), followed by any characters (.*), and ending
+                with a newline character \n.
 
-            \n:
-            This part of the pattern matches a newline character, ensuring that the address capture starts at the
-            beginning of a new line.
-
-            (\d+\s[\s\S]+?\d{5}(?:-\d{4})?):
-            This is the capturing group that matches and captures the mailing address.
-
-            \d+\s:
-                \d+ matches one or more digits, which is typical for the street number at the beginning of an address.
-                \s matches a single whitespace character following the street number.
-
-            [\s\S]+?:
-                [\s\S] matches any character, and +? is a non-greedy qualifier that matches 1 or more occurrences of the
-                preceding character class, but as few as necessary to allow the rest of the pattern to match.
-
-            \d{5}(?:-\d{4})?:
-                \d{5} matches exactly 5 digits, which is typical for a zipcode.
-                (?:-\d{4})? is an optional non-capturing group that matches a hyphen followed by exactly 4 digits,
-                which is typical for the 4-digit extension of a 9-digit zipcode. The ? makes this group optional,
-                allowing for either 5-digit or 9-digit zipcodes.
+                ii. [A-Z\s]+,\s+[A-Z]+\s+\d{5}(?:-\d{4})?: This part of the pattern matches the city, state, and
+                zip code. [A-Z\s]+ matches the city name, \s+[A-Z]+\s+ matches the state abbreviation, and \d{5}
+                (?:-\d{4})? matches the 5-digit or 9-digit zip code.
 
         :param text: defaults to the second page.
         :return: mailing address if found else None
         """
-        pattern = re.compile(r'—\s*vs-[\s\S]*?\n(\d+\s[\s\S]+?\d{5}(?:-\d{4})?)', re.MULTILINE)
+        pattern = re.compile(r'[A-Z\s]+\n((?:\d+.*\n)+[A-Z\s]+,\s+[A-Z]+\s+\d{5}(?:-\d{4})?)', re.MULTILINE)
         match = pattern.search(text)
         if match:
             return match.group(1)
