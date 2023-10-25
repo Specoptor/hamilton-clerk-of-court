@@ -44,7 +44,7 @@
     "second_owner": null,
     "property_address": "3595 Harvey Avenue, Cincinnati, Ohio 45229",
     "mailing_address": "1. Plaintiff, Harvey Point - Cedar Meadows IIT Homeowners Association, Inc., isa\nnot-for-profit corporation organized and existing under the laws of the State of Ohio which\nis organized to administer and maintain the property commonly known as Harvey Point-\n\nCedar Meadows in Hamilton County, Ohio.\n\n04896",
-    "property_price": null,
+    "property_price": "$129,117.00",
     "interest_rate": null
   },
   "A2303258": {
@@ -52,7 +52,7 @@
     "second_owner": null,
     "property_address": "3591 Harvey Avenue, Cincinnati, Ohio 45229",
     "mailing_address": null,
-    "property_price": null,
+    "property_price": "$93,575.00",
     "interest_rate": null
   },
   "A2303259": {
@@ -60,7 +60,7 @@
     "second_owner": null,
     "property_address": "118 Glenwood Avenue, Cincinnati, Ohio 45217",
     "mailing_address": null,
-    "property_price": null,
+    "property_price": "$126,700.00",
     "interest_rate": null
   },
   "A2303260": {
@@ -92,7 +92,7 @@
     "second_owner": null,
     "property_address": "116 GLENWOOD AVENUE , CINCINNATI, OHIO 45217",
     "mailing_address": null,
-    "property_price": null,
+    "property_price": "$41,900.00",
     "interest_rate": null
   },
   "A2303278": {
@@ -100,7 +100,7 @@
     "second_owner": null,
     "property_address": "66 Glenwood Avenue, Cincinnati, Ohio 45217",
     "mailing_address": null,
-    "property_price": null,
+    "property_price": "$138,000.00",
     "interest_rate": null
   },
   "A2303286": {
@@ -132,7 +132,7 @@
     "second_owner": null,
     "property_address": null,
     "mailing_address": "399 West Galbraith Road, Unit 213\nCincinnati, Ohio 45215",
-    "property_price": null,
+    "property_price": "$152,950.00",
     "interest_rate": null
   },
   "A2303319": {
@@ -140,7 +140,7 @@
     "second_owner": null,
     "property_address": "3950 Olde Savannah Drive, Unit 9",
     "mailing_address": "3950 Olde Savannah Drive, Unit 9\nCincinnati, Ohio 45247",
-    "property_price": null,
+    "property_price": "$97,850.00",
     "interest_rate": null
   },
   "A2303321": {
@@ -156,7 +156,7 @@
     "second_owner": null,
     "property_address": "7217 Creekview Drive, Unit 11, Cincinnati, Ohio 45247",
     "mailing_address": "7217 Creekview Drive, Unit 11\nCincinnati, Ohio 45247",
-    "property_price": null,
+    "property_price": "$56,548.00",
     "interest_rate": null
   },
   "A2303351": {
@@ -196,7 +196,7 @@
     "second_owner": null,
     "property_address": "5436; Bluesky Drive, Unit #21, Cincinnati, Ohio 45247",
     "mailing_address": "5435 Blue Sky Drive, Unit #21\nCincinnati, Ohio 45247",
-    "property_price": null,
+    "property_price": "$72,000.00",
     "interest_rate": "3.78%"
   },
   "A2303393": {
@@ -268,7 +268,7 @@
     "second_owner": null,
     "property_address": "283 Bedford Glen Lane, Cincinnati, Ohio 45246",
     "mailing_address": "283 Bedford Glen Lane\nCincinnati, Ohio 45246",
-    "property_price": null,
+    "property_price": "$92,000.00",
     "interest_rate": null
   },
   "A2303471": {
@@ -348,7 +348,7 @@
     "second_owner": null,
     "property_address": "7887 Ramble View Unit 203, Cincinnati, OH 45231",
     "mailing_address": "7887 RAMBLE VIEW - UNIT 203 PPN# 590-0201-0404-00 AND 590-\nCINCINNATI, OH 45231",
-    "property_price": null,
+    "property_price": "$128,762.00",
     "interest_rate": "2.75%"
   },
   "A2303508": {
@@ -364,7 +364,7 @@
     "second_owner": null,
     "property_address": null,
     "mailing_address": "5001 KINGSLEY DRIVE\nCINCINNATI, OH 45227",
-    "property_price": null,
+    "property_price": "$0",
     "interest_rate": "9.2400%"
   },
   "A2303512": {
@@ -444,7 +444,7 @@
     "second_owner": null,
     "property_address": null,
     "mailing_address": "2350 Washington Avenue In Rem\nCincinnati, OH 45231",
-    "property_price": null,
+    "property_price": "$2,493.12",
     "interest_rate": "5.00%"
   },
   "A2303564": {
@@ -516,7 +516,7 @@
     "second_owner": null,
     "property_address": "543 Glenwood Avenue, Cincinnati, Ohio 45229",
     "mailing_address": "04920115-1\n\nE-FILED 08/28/2023 8:51 AM / CONFIRMATION 13625",
-    "property_price": null,
+    "property_price": "$2,510.21",
     "interest_rate": null
   },
   "A2303635": {
@@ -564,7 +564,7 @@
     "second_owner": null,
     "property_address": "1199 W SEYMOUR AVE, CINCINNATI, OH 45216-1839",
     "mailing_address": null,
-    "property_price": null,
+    "property_price": "$108,000.00",
     "interest_rate": null
   },
   "A2303703": {
@@ -572,7 +572,7 @@
     "second_owner": null,
     "property_address": null,
     "mailing_address": "5001 KINGSLEY DRIVE MAIL DROP:\n1MOB10\nCINCINNATI, OH 45227",
-    "property_price": null,
+    "property_price": "$0",
     "interest_rate": null
   },
   "A2303710": {
