@@ -287,32 +287,75 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         Extract the property address from the entire pdf text.
 
         Regex Explanation:
-            \s*:
-            This part matches the text "property address:" (case-insensitively due to re.IGNORECASE) followed by
-            any amount of whitespace (\s*).
+            - General:
+                \s*:
+                This part matches any amount of whitespace (\s*).
 
-            (.*?\d{5}(?:-\d{4})?):
-            This part captures everything from the text following "property address:"
-            up to the zipcode.
+            - Pattern1:
+                property address:\s*(.*?\d{5}(?:-\d{4})?):
+                This pattern is designed to capture the text following "property address:" up to the zipcode.
 
-            .*?:
-            This part matches any character (except for a newline) zero or more times,
-            but as few times as necessary to satisfy the pattern (non-greedy match).
+                .*?:
+                This part matches any character (except for a newline) zero or more times,
+                but as few times as necessary to satisfy the pattern (non-greedy match).
 
-            \d{5}(?:-\d{4})?:
-            This part matches a 5-digit zipcode followed optionally by a hyphen and
-            a 4-digit extension.
+                \d{5}(?:-\d{4})?:
+                This part matches a 5-digit zipcode followed optionally by a hyphen and
+                a 4-digit extension.
 
-            The ?: within the parentheses indicates a non-capturing group, so that the ? repetition applies to the
-            entire group (-\d{4}), and not just the last digit.
+                The ?: within the parentheses indicates a non-capturing group, so that the ? repetition applies to the
+                entire group (-\d{4}), and not just the last digit.
+
+            - Pattern2:
+                Property Address:\s*((?:.|\n)+?)(?=\n\n|\Z|\n[a-zA-Z]):
+                This pattern is designed to capture the text following "Property Address:" up to either two newline characters,
+                the end of the text, or a newline followed by a letter.
+
+                (?:.|\n)+?:
+                This part matches any character or newline, one or more times, but as few times as necessary to
+                satisfy the pattern (non-greedy match). The ?: indicates a non-capturing group.
+
+                (?=\n\n|\Z|\n[a-zA-Z]):
+                This is a positive lookahead assertion. It requires the text following the captured group to either be
+                two newline characters, the end of the text (\Z), or a newline followed by a letter, without including
+                this text in the captured group.
 
         :param text: defaults to the entire pdf text
         :return: property address if found else None
         """
-        pattern = re.compile(r'property address:\s*(.*?\d{5}(?:-\d{4})?)', re.IGNORECASE)
-        match = pattern.search(text)
-        if match:
-            return match.group(1)
+        # Split the text by the '[Property Address]' marker
+        parts = text.split('[Property Address]')
+        if len(parts) >= 2:
+            # Get the portion of text before the '[Property Address]' marker
+            preceding_text = parts[0].strip()
+            # Split the preceding text into lines and reverse the order so we examine lines from bottom to top
+            lines = preceding_text.split('\n')[::-1]
+            # Initialize an empty string to hold the address
+            address = ''
+            # Iterate over up to the first 3 lines preceding the marker, stopping when a zipcode is found
+            for i, line in enumerate(lines[:3]):
+                # Prepend the current line to the address string
+                address = line.strip() + ', ' + address if address else line.strip()
+                # If a zipcode pattern is found in the address, return the address
+                if re.search(r'\d{5}(?:-\d{4})?$', address):
+                    if address.startswith("Cincinnati, OH"):
+                        # append the preceding line
+                        address = lines[i + 1].strip() + ', ' + address
+                    return address
+
+        pattern1 = re.compile(r'property address:\s*(.*?\d{5}(?:-\d{4})?)', re.IGNORECASE)
+        match1 = pattern1.search(text)
+        if match1 and not match1.group(1).startswith("1. BORROWER'S"):
+            address = match1.group(1)
+            return address
+
+        pattern2 = re.compile(r'Property Address:\s*((?:.|\n)+?)(?=\n\n|\Z|\n[a-zA-Z])', re.IGNORECASE | re.DOTALL)
+        match2 = pattern2.search(text)
+        if match2:
+            address = match2.group(1).strip().replace('\n', ', ')
+            address = re.sub(r'\s+', ' ', address).strip()
+            return address
+
         return None
 
     def mailing_address(text: str = pages[1]) -> str | None:
