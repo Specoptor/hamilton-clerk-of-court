@@ -3,7 +3,7 @@
     "first_owner": "MARCUS H SEBENS",
     "second_owner": "BETH MARIE SEBENS",
     "property_address": "9666 REXFORD DRIVE, CINCINNATI, OH 45241",
-    "mailing_address": "9666 REXFORD DRIVE :\nCINCINNATI, OH 45241",
+    "mailing_address": "9666 REXFORD DRIVE\n\nCINCINNATI, OH 45241",
     "property_price": "$288,064.76",
     "interest_rate": "7.0000%"
   },
@@ -35,7 +35,7 @@
     "first_owner": "UNKNOWN ADMINISTRATOR",
     "second_owner": null,
     "property_address": "9636 TANBARK COURT, CINCINNATI, OHIO 45231",
-    "mailing_address": null,
+    "mailing_address": "11617 NEW HOPE DR,\n\nCINCINNATI, OH 45240",
     "property_price": null,
     "interest_rate": "3.330%"
   },
@@ -107,7 +107,7 @@
     "first_owner": "MICHAEL ERIC CLANCEY",
     "second_owner": "NADYA CHANG",
     "property_address": "7258 Royalgreen Drive, Cincinnati, Ohio 45244",
-    "mailing_address": null,
+    "mailing_address": "8595 BEECHMONT AVE, STE 305,\nCINCINNATI, OH 45255",
     "property_price": null,
     "interest_rate": "7.375%"
   },
@@ -227,7 +227,7 @@
     "first_owner": "LARRY D HARRIS",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "8845 PLANET DR\nCINCINNATI, OH 45231",
     "property_price": null,
     "interest_rate": "4.37500%"
   },
@@ -243,7 +243,7 @@
     "first_owner": "STEVEN B AMUNDSON",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "5236 GLOBE AVE Permanent Parcel No: 651-0006-0214-00\n\nCINCINNATI, OH 45212",
     "property_price": "$81,009.06",
     "interest_rate": "3.8750%"
   },
@@ -339,7 +339,7 @@
     "first_owner": "JEREMY DENZEL DAVIS",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "5001 KINGSLEY DRIVE\n\nCINCINNATI, OH 45227",
     "property_price": "$18,283.23",
     "interest_rate": "9.4900%"
   },
@@ -347,7 +347,7 @@
     "first_owner": "GILBERT FARMER",
     "second_owner": null,
     "property_address": "7887 RAMBLE VIEW UNIT 203, CINCINNATI, OH 45231",
-    "mailing_address": null,
+    "mailing_address": "7887 RAMBLE VIEW - UNIT 203 PPN# 590-0201-0404-00 AND 590-\nCINCINNATI, OH 45231",
     "property_price": null,
     "interest_rate": "2.75%"
   },
@@ -363,7 +363,7 @@
     "first_owner": "THE UNKNOWN HEIRS",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "5001 KINGSLEY DRIVE\nCINCINNATI, OH 45227",
     "property_price": null,
     "interest_rate": "9.2400%"
   },
@@ -395,7 +395,7 @@
     "first_owner": "RONALD G AYERS",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "635 WOODWARD AVENUE\nDETROIT, MI 48226",
     "property_price": "$33,881.37",
     "interest_rate": "4.2500%"
   },
@@ -403,7 +403,7 @@
     "first_owner": "HORACE GREELY",
     "second_owner": null,
     "property_address": "6119 FAIRCREST COURT, CINCINNATI, OH 45224",
-    "mailing_address": null,
+    "mailing_address": "6119 FAIRCREST COURT : 236-0001-0156-00\nCINCINNATI, OH 45224",
     "property_price": "$116,123.33",
     "interest_rate": "2.9900%"
   },
@@ -451,7 +451,7 @@
     "first_owner": "DANIELLE RAYMOND",
     "second_owner": null,
     "property_address": "10260",
-    "mailing_address": null,
+    "mailing_address": "10260 STORM DRIVE PPN# 510-0113-0276-00\nCINCINNATI, OH 45251",
     "property_price": null,
     "interest_rate": "3.25%"
   },
@@ -459,7 +459,7 @@
     "first_owner": "RENEE M KALBERG",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "4041 LARCHVIEW DRIVE\nCINCINNATI, OH 45236",
     "property_price": "$61,814.48",
     "interest_rate": "3.8750%"
   },
@@ -507,7 +507,7 @@
     "first_owner": "RICHARD W HUNT",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "1001 SEMMES AVENUE, 4TH FLOOR\nRICHMOND, VA 23224",
     "property_price": "$137,101.71",
     "interest_rate": "8.9900%"
   },
@@ -523,7 +523,7 @@
     "first_owner": "RANDALL SCHNEIDER",
     "second_owner": null,
     "property_address": "1523 SIDONA LN, CINCINNATI, OHIO 45238",
-    "mailing_address": null,
+    "mailing_address": "1523 SIDONA LN\n\nCINCINNATI, OH 45238",
     "property_price": "$66,685.37",
     "interest_rate": "4.25%"
   },
@@ -531,7 +531,7 @@
     "first_owner": "JAMES MICHAEL BRATEK",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "4910 TIEDEMAN ROAD\nBROOKLYN, OH 44144",
     "property_price": "$247,008.26",
     "interest_rate": "4.61%"
   },
@@ -539,7 +539,7 @@
     "first_owner": "LETHA M CHASTAIN",
     "second_owner": null,
     "property_address": "10 Oakwood Court, CINCINNATI, Ohio 45246",
-    "mailing_address": null,
+    "mailing_address": "10 OAKWOOD CT\nCINCINNATI, OH 45246",
     "property_price": null,
     "interest_rate": "3.62500%"
   },
@@ -555,7 +555,7 @@
     "first_owner": "RONDA J WILLIAMS",
     "second_owner": null,
     "property_address": "1965 ANDINA AVE, CINCINNATI, OHIO 45237",
-    "mailing_address": null,
+    "mailing_address": "1965 ANDINA AVENUE\nCINCINNATI, OH 45237",
     "property_price": "$72,521.90",
     "interest_rate": "3.125%"
   },
@@ -571,7 +571,7 @@
     "first_owner": "RICHARD T ADAMS",
     "second_owner": null,
     "property_address": null,
-    "mailing_address": null,
+    "mailing_address": "5001 KINGSLEY DRIVE MAIL DROP:\n1MOB10\nCINCINNATI, OH 45227",
     "property_price": null,
     "interest_rate": null
   },
@@ -587,7 +587,7 @@
     "first_owner": "ROXANNE ADAMS",
     "second_owner": null,
     "property_address": "2240 ROSEDALE AVENUE, CINCINNATI, OH 45237",
-    "mailing_address": null,
+    "mailing_address": "2240 ROSEDALE AVENUE\nCINCINNATI, OH 45237",
     "property_price": "$130,086.56",
     "interest_rate": "4.2500%"
   },
