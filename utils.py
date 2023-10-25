@@ -144,7 +144,7 @@ def extract_text_from_pdf(pdf_path: str) -> list[str]:
     :param pdf_path: path to pdf file.
     :return:
     """
-    images = convert_from_path(pdf_path, dpi=300)
+    images = convert_from_path(pdf_path, dpi=150)
 
     # Initialize an empty string to store the OCR results
     pages = []
@@ -172,6 +172,21 @@ def add_poppler_bin_to_path() -> None:
     os.environ["PATH"] += os.pathsep + poppler_path
 
 
+def process_pdf(pdf_path: str) -> list[str]:
+    """
+    Extract text from the given PDF filepath
+
+    :param pdf_path: path to pdf file.
+    :return: parsed pdf content.
+    """
+    directory_path = initial_docs_directory()
+    if pdf_path.endswith(".pdf"):
+        pdf_path = os.path.join(directory_path, pdf_path)
+        return extract_text_from_pdf(pdf_path)
+    else:
+        return []
+
+
 def process_directory(directory_path: str | None = None) -> dict[str, list[str]]:
     """
     Extract text from all PDF files in the given directory.
@@ -184,9 +199,7 @@ def process_directory(directory_path: str | None = None) -> dict[str, list[str]]
     directory_path = directory_path or initial_docs_directory()
     texts = {}
     for filename in os.listdir(directory_path):
-        if filename.endswith(".pdf"):
-            pdf_path = os.path.join(directory_path, filename)
-            texts[filename.split('_')[0]] = extract_text_from_pdf(pdf_path)
+        texts[filename.split('_')[0]] = process_pdf(filename)
 
     # save the pdfs to json file if all pdfs processed successfully.
     if len(texts) == len(os.listdir(directory_path)):
@@ -210,7 +223,7 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
     :param pages: list of text of each text of the pdf.
     :return: a dictionary containing the datapoints.
     """
-    pdf_text = ' '.join(pages)
+    pdf_text = '\n'.join(pages)
 
     def first_owner(text: str = pages[0]) -> str | None:
         """
