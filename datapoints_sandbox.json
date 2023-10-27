@@ -220,7 +220,7 @@
     "second_owner": null,
     "property_address": "12013 MAXIM WAY, SYMMES TWP, OH 45249",
     "mailing_address": "730 Rothrock Drive\n\nGalloway, OH 43119",
-    "property_price": null,
+    "property_price": "$134,000.00",
     "interest_rate": "3.625%"
   },
   "A2303421": {
@@ -356,7 +356,7 @@
     "second_owner": null,
     "property_address": "1789 Crest Hill Ave, Cincinnati, OH 45237",
     "mailing_address": "1789 Crest Hill Ave\nCincinnati, OH 45237",
-    "property_price": null,
+    "property_price": "$121,754.00",
     "interest_rate": null
   },
   "A2303511": {
@@ -540,7 +540,7 @@
     "second_owner": null,
     "property_address": "10 OAKWOOD COURT, CINCINNATI, OH 45246",
     "mailing_address": "10 OAKWOOD CT\nCINCINNATI, OH 45246",
-    "property_price": null,
+    "property_price": "$80,000.00",
     "interest_rate": "3.62500%"
   },
   "A2303680": {

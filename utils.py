@@ -527,6 +527,11 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         if new_match3:
             return new_match3.group(1)
 
+        pattern4 = re.compile(r'(?i:promise to pay).*?(\$[\d,]+(?:\.\d{2})?)')
+        match4 = pattern4.search(pdf_text)
+        if match4:
+            return match4.group(1)
+
         return None
 
     def interest_rate(text: str = pdf_text) -> str | None:
