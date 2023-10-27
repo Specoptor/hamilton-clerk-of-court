@@ -472,14 +472,46 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         :param text: defaults to the entire pdf text
         :return: property price if found else None
         """
+
+        # def find_largest_dollar_amount(text: str) -> str | None:
+        #     """
+        #     Find the largest dollar amount in the given text.
+        #
+        #     :param text: content to search in
+        #     :return: text format of the dollar amount
+        #     """
+        #     # Step 1: Use regex to find all dollar amounts
+        #     pattern = re.compile(r'\$([\d,]+(?:\.\d{2})?)')
+        #     amounts = pattern.findall(text)
+        #
+        #     # Step 2: Convert strings to float numbers
+        #     comma_less_amounts = [amount.replace(',', '') for amount in amounts if amount]
+        #     float_amounts = [float(amount.replace(',', '')) for amount in comma_less_amounts
+        #                      if amount]
+        #     float_amounts = [amount for amount in float_amounts if 10000 < amount < 1000000]
+        #
+        #     if not float_amounts:
+        #         return None  # Return None if no dollar amounts were found
+        #
+        #     # Step 3: Find the largest number
+        #     largest_amount = max(float_amounts)
+        #
+        #     # Step 4: Convert the largest number back to a string with the desired format
+        #     largest_amount_str = f"${largest_amount:,.2f}"
+        #     return largest_amount_str
+        #
+        # amount = find_largest_dollar_amount(text)
+        # if amount:
+        #     return amount
+
         # New pattern to match "LOAN AMOUNT" followed by a dollar amount
-        new_pattern1 = re.compile(r'LOAN AMOUNT\s*:\s*(\$[\d,]+(?:\.\d{2})?)', re.IGNORECASE)
+        new_pattern1 = re.compile(r'(?i:LOAN\s*(?:AMOUNT)?)\s*:\s*(\$[\d,]+(?:\.\d{2})?)')
         new_match1 = new_pattern1.search(text)
         if new_match1:
             return new_match1.group(1)
 
         # Additional pattern to match "Principal Amount" followed by a dollar amount
-        new_pattern2 = re.compile(r'Principal Amount\s*:\s*(\$[\d,]+(?:\.\d{2})?)', re.IGNORECASE)
+        new_pattern2 = re.compile(r'(?i:Principal\s*(?:AMOUNT)?)\s*:\s*(\$[\d,]+(?:\.\d{2})?)')
         new_match2 = new_pattern2.search(text)
         if new_match2:
             return new_match2.group(1)
@@ -490,7 +522,7 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
             return preceding_interest_rate_match.group(1)
 
         # Extract the first dollar amount appearing after the original amount
-        new_pattern3 = re.compile(r'(?i:original amount).*?(\$[\d,]+(?:\.\d{2})?)', re.IGNORECASE)
+        new_pattern3 = re.compile(r'(?i:original\s*(?:AMOUNT)?)\s*.*?(\$[\d,]+(?:\.\d{2})?)')
         new_match3 = new_pattern3.search(text)
         if new_match3:
             return new_match3.group(1)
