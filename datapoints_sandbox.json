@@ -292,7 +292,7 @@
     "second_owner": null,
     "property_address": "11813",
     "mailing_address": "11813 Loganfield Court\nCincinnati, OH 45249",
-    "property_price": null,
+    "property_price": "$203,000.00",
     "interest_rate": "4.34%"
   },
   "A2303475": {
@@ -300,7 +300,7 @@
     "second_owner": null,
     "property_address": null,
     "mailing_address": "7431 Buena Vista Drive\n\nCleves, OH 45002",
-    "property_price": null,
+    "property_price": "$78,750.00",
     "interest_rate": "4.5%"
   },
   "A2303476": {
@@ -324,7 +324,7 @@
     "second_owner": null,
     "property_address": null,
     "mailing_address": "11475 Fiesta Court\nCincinnati, OH 45240",
-    "property_price": null,
+    "property_price": "$40,000.00",
     "interest_rate": null
   },
   "A2303494": {
@@ -388,7 +388,7 @@
     "second_owner": null,
     "property_address": null,
     "mailing_address": null,
-    "property_price": null,
+    "property_price": "$23,500,000.00",
     "interest_rate": "5.00%"
   },
   "A2303523": {
@@ -580,7 +580,7 @@
     "second_owner": null,
     "property_address": "3021 Boudinot Ave, Cincinnati, OH 45236",
     "mailing_address": "3021 Boudinot Ave\nCincinnati, OH 45238",
-    "property_price": null,
+    "property_price": "$78,834.00",
     "interest_rate": null
   },
   "A2303716": {
