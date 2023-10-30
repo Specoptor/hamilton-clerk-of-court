@@ -9,7 +9,7 @@
   },
   "A2303247": {
     "first_owner": "SHANNON M COLEMAN",
-    "second_owner": "UNITED STATES OF AMERICA,\nSECRETARY OF HOUSING AND\nURBAN DEVELOPMENT\n\nC/O US ATTORNEY GENERAL\n221 EAST 4TH STREET\nCINCINNATI, OH 45202\n\nUNITED STATES OF AMERICA,\nSECRETARY OF HOUSING AND\nURBAN DEVELOPMENT\n\nC/O ATTORNEY GENERAL OF THE\nUNITED STATES, U.S. DEPARTMENT\nOF JUSTICE\n\n950 PENNSYLVANIA AVENUE, NW\nWASHINGTON, DC 20530\n\nSYNCHRONY BANK\nC/O CT CORPORATION SYSTEM, S/A",
+    "second_owner": null,
     "property_address": "1127 Imprint Lone, Cincinnati, OH 45240",
     "mailing_address": "1127 IMPRINT LANE :\nCINCINNATI, OH 45240",
     "property_price": "$129,339.14",
@@ -273,7 +273,7 @@
   },
   "A2303471": {
     "first_owner": "ESTATE OF FELICIA NOEL",
-    "second_owner": "Plaintiff,\n\nVv.\n\nEstate of Felicia Noel Johnson\nc/o Elizabeth Tye, Esq",
+    "second_owner": "Bernice Johnson",
     "property_address": "10635",
     "mailing_address": "1318 Lincoln Ave.\nCincinnati, Ohio 45206",
     "property_price": "$82,094.61",
@@ -357,7 +357,7 @@
     "property_address": "1789 Crest Hill Ave, Cincinnati, OH 45237",
     "mailing_address": "1789 Crest Hill Ave\nCincinnati, OH 45237",
     "property_price": "$121,754.00",
-    "interest_rate": null
+    "interest_rate": "3.750"
   },
   "A2303511": {
     "first_owner": "THE UNKNOWN HEIRS",
@@ -393,7 +393,7 @@
   },
   "A2303523": {
     "first_owner": "RONALD G AYERS",
-    "second_owner": "Plaintiff,\nVS.\nRONALD G. AYERS COMPLAINT IN FORECLOSURE",
+    "second_owner": null,
     "property_address": "9883 Crusader Dr, Cincinnati, OH 45251",
     "mailing_address": "635 WOODWARD AVENUE\nDETROIT, MI 48226",
     "property_price": "$33,881.37",
@@ -501,7 +501,7 @@
     "property_address": "4919 Andrew Street, Cincinnati, OH 45217",
     "mailing_address": "4919 Andrew St\nCincinnati, OH 45217",
     "property_price": "$88,271.00",
-    "interest_rate": null
+    "interest_rate": "4.750"
   },
   "A2303621": {
     "first_owner": "RICHARD W HUNT",
@@ -529,7 +529,7 @@
   },
   "A2303668": {
     "first_owner": "JAMES MICHAEL BRATEK",
-    "second_owner": "Plaintiff\n-vVSs-\n\nJAMES MICHAEL BRATEK",
+    "second_owner": null,
     "property_address": null,
     "mailing_address": "4910 TIEDEMAN ROAD\nBROOKLYN, OH 44144",
     "property_price": "$252,415.28",
@@ -565,7 +565,7 @@
     "property_address": "1199 W SEYMOUR AVE, CINCINNATI, OH 45216-1839",
     "mailing_address": null,
     "property_price": "$108,000.00",
-    "interest_rate": null
+    "interest_rate": "6.750"
   },
   "A2303703": {
     "first_owner": "RICHARD T ADAMS",
