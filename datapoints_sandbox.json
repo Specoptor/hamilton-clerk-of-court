@@ -133,7 +133,7 @@
     "property_address": null,
     "mailing_address": "399 West Galbraith Road, Unit 213\nCincinnati, Ohio 45215",
     "property_price": "$152,950.00",
-    "interest_rate": null
+    "interest_rate": "5%"
   },
   "A2303319": {
     "first_owner": "DEBORAH J STROHOFER",
@@ -213,7 +213,7 @@
     "property_address": "3712 Homelawn Avenue, Cincinnati, OH 45211",
     "mailing_address": "3712 Homelawn Avenue\nCincinnati, OH 45211",
     "property_price": null,
-    "interest_rate": null
+    "interest_rate": "6%"
   },
   "A2303398": {
     "first_owner": "LAFE STATON AS HEIR AND",
@@ -573,7 +573,7 @@
     "property_address": null,
     "mailing_address": "5001 KINGSLEY DRIVE MAIL DROP:\n1MOB10\nCINCINNATI, OH 45227",
     "property_price": "$0",
-    "interest_rate": null
+    "interest_rate": "10%"
   },
   "A2303710": {
     "first_owner": "JAIME WARREN",
