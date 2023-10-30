@@ -573,6 +573,11 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         if match:
             return match.group(0)
 
+        pattern_2 = re.compile(r"interest\s+\D*\s*(\d+%)")
+        match_2 = pattern_2.search(text)
+        if match_2:
+            return match_2.group(1)
+
         match_mixed_case = re.search(r"(?i)Principal\s+has\s+been\s+paid[^\d]*(\d{1,2}\.\d+)\s*%", text)
         match_value_mixed_case = match_mixed_case.group(1) if match_mixed_case else None
         return match_value_mixed_case
