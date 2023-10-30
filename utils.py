@@ -283,15 +283,23 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
 
         patterns = [
             r'(?<=\d{5}\n\n)(.*?)(?=\n+\d{4,5}\s)',
-            r'(?<=\d{5}\n\n)([\s\S]*?)(?=\n+\d{4,5}\s)',
             r'(?<=and\n)([A-Za-z\s]+)(?=\n\d{4,5}\s)',
-            r'(?<=and\n\n)([A-Za-z\s]+)(?=\n\d{4,5}\s)'
+            r'(?<=and\n\n)([A-Za-z\s]+)(?=\n\d{4,5}\s)',
+            r'(?<=\d{5}\n\n)([\s\S]*?)(?=\n+\d{4,5}\s)'
         ]
 
         for i, pattern in enumerate(patterns):
             match = re.search(pattern, text)
-            if match and match.group(1) != 'Also serve at:':
-                return match.group(1).strip()
+            if match:
+                checks = ['also serve at:','united states', 'plaintiff']
+                for check in checks:
+                    if not match.group(1).lower().startswith(check):
+                        continue
+                    else:
+                        break
+                else:
+                    return match.group(1).strip()
+
         return None
 
     def property_address(text: str = pdf_text) -> str | None:
@@ -562,10 +570,13 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         """
         pattern = re.compile(r'\b\d+\.\d+%')
         match = pattern.search(text)
-
         if match:
             return match.group(0)
-        return None
+
+        match_mixed_case = re.search(r"(?i)Principal\s+has\s+been\s+paid[^\d]*(\d{1,2}\.\d+)\s*%", text)
+        match_value_mixed_case = match_mixed_case.group(1) if match_mixed_case else None
+        return match_value_mixed_case
+
 
     return {
         'first_owner': first_owner(),
