@@ -283,11 +283,12 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
 
         patterns = [
             r'(?<=\d{5}\n\n)(.*?)(?=\n+\d{4,5}\s)',
-            r'(?<=\d{5}\n\n)([\s\S]*?)(?=\n+\d{4,5}\s)'
-            r'(?<=and\n)([A-Za-z\s]+)(?=\n\d{4,5}\s)'
+            r'(?<=\d{5}\n\n)([\s\S]*?)(?=\n+\d{4,5}\s)',
+            r'(?<=and\n)([A-Za-z\s]+)(?=\n\d{4,5}\s)',
             r'(?<=and\n\n)([A-Za-z\s]+)(?=\n\d{4,5}\s)'
         ]
-        for pattern in patterns:
+
+        for i, pattern in enumerate(patterns):
             match = re.search(pattern, text)
             if match and match.group(1) != 'Also serve at:':
                 return match.group(1).strip()
