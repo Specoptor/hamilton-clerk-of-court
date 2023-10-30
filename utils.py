@@ -280,6 +280,17 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         match = re.search(r'(?:\d{5}(?:-\d{4})?.*\n){1,2}([A-Z\s]+)\n\d+', text, re.MULTILINE)
         if match:
             return match.group(1).strip()
+
+        patterns = [
+            r'(?<=\d{5}\n\n)(.*?)(?=\n+\d{4,5}\s)',
+            r'(?<=\d{5}\n\n)([\s\S]*?)(?=\n+\d{4,5}\s)'
+            r'(?<=and\n)([A-Za-z\s]+)(?=\n\d{4,5}\s)'
+            r'(?<=and\n\n)([A-Za-z\s]+)(?=\n\d{4,5}\s)'
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, text)
+            if match and match.group(1) != 'Also serve at:':
+                return match.group(1).strip()
         return None
 
     def property_address(text: str = pdf_text) -> str | None:

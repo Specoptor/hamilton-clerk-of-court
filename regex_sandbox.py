@@ -8,8 +8,7 @@ with open('parsed_pdfs.json', 'r') as f:
 
 datapoints_dict = {}
 for case_number, pdf in parsed_pdfs.items():
-    # if case_number == "A2303511":
-        datapoints_dict[case_number] = extract_datapoints_from_pdf(pdf)
+    datapoints_dict[case_number] = extract_datapoints_from_pdf(pdf)
 
 with open('datapoints_sandbox.json', 'w') as f:
     json.dump(datapoints_dict, f)
