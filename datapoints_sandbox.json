@@ -43,7 +43,7 @@
     "first_owner": "JORDAN A MITCHELL",
     "second_owner": null,
     "property_address": "3595 Harvey Avenue, Cincinnati, Ohio 45229",
-    "mailing_address": "3595 Harvey Avenue Parcel No. 113-0002-0097-00\nCincinnati, Ohio 45229",
+    "mailing_address": "3595 Harvey Avenue \nCincinnati, Ohio 45229",
     "property_price": "$129,117.00",
     "interest_rate": null
   },
@@ -51,7 +51,7 @@
     "first_owner": "RACHELLE D SHELLS",
     "second_owner": null,
     "property_address": "3591 Harvey Avenue, Cincinnati, Ohio 45229",
-    "mailing_address": "3591 Harvey Avenue Parcel No. 113-0002-0098-00\n\nCincinnati, Ohio 45229",
+    "mailing_address": "3591 Harvey Avenue \n\nCincinnati, Ohio 45229",
     "property_price": "$93,575.00",
     "interest_rate": null
   },
@@ -59,7 +59,7 @@
     "first_owner": "YOLANDA D LAUDERDALE",
     "second_owner": null,
     "property_address": "118 Glenwood Avenue, Cincinnati, Ohio 45217",
-    "mailing_address": "118 Glenwood Avenue Parcel No. 216-0039-0382-00\n\nCincinnati, Ohio 45217",
+    "mailing_address": "118 Glenwood Avenue \n\nCincinnati, Ohio 45217",
     "property_price": "$126,700.00",
     "interest_rate": null
   },
@@ -83,7 +83,7 @@
     "first_owner": "UNKNOWN HEIRS OF WILLIE",
     "second_owner": null,
     "property_address": "1967 COMPTON RD, CINCINNATI, OHIO 45231",
-    "mailing_address": null,
+    "mailing_address": "\n\n-VS-\n\nUnknown heirs, devisees, legatees,\n\nexecutors, administrators, spouses and the\n\nunknown guardians of minor and/or\n\nincompetent heirs of Willie L Johnson\n\nAddress Unknown\n\nState of Ohio, Department of Taxation\n\nc/o the Ohio Attorney General\n\n30 East Broad Street, 14th floor\n\nColumbus, OH 43215",
     "property_price": "$107,470.11",
     "interest_rate": "2.625%"
   },
@@ -91,7 +91,7 @@
     "first_owner": "ANDREA JOHNSON",
     "second_owner": null,
     "property_address": "116 GLENWOOD AVENUE , CINCINNATI, OHIO 45217",
-    "mailing_address": "116 Glenwood Avenue Parcel No. 216-0039-0383-00\n\nCincinnati, Ohio 45217",
+    "mailing_address": "116 Glenwood Avenue \n\nCincinnati, Ohio 45217",
     "property_price": "$41,900.00",
     "interest_rate": null
   },
@@ -99,7 +99,7 @@
     "first_owner": "SANDRA M JONES",
     "second_owner": null,
     "property_address": "66 Glenwood Avenue, Cincinnati, Ohio 45217",
-    "mailing_address": "66 Glenwood Avenue Parcel No. 216-0039-0400-00\n\nCincinnati, Ohio 45217",
+    "mailing_address": "66 Glenwood Avenue \n\nCincinnati, Ohio 45217",
     "property_price": "$138,000.00",
     "interest_rate": null
   },
@@ -115,7 +115,7 @@
     "first_owner": "CAROLYN KING",
     "second_owner": null,
     "property_address": "2488 DUNAWAY CT, CINCINNATI, OH 45238",
-    "mailing_address": "248-0001-0142-00\n\nVs.\n\nCarolyn King\n\n7091 O\u2019Connell Place\nUnion, KY 41091",
+    "mailing_address": "\n\nVs.\n\nCarolyn King\n\n7091 O\u2019Connell Place\nUnion, KY 41091",
     "property_price": "$70,992.60",
     "interest_rate": "4.250%"
   },
@@ -235,7 +235,7 @@
     "first_owner": "THOMAS CHAPMAN JR",
     "second_owner": "TIMOTHY CHAPMAN",
     "property_address": "1333 Chamber r| CINCINNATI, OH 45106",
-    "mailing_address": "1499 Summit Road Parcel No. 594-0010-0045-00, 594-0010-0046-\nCincinnati, Ohio 45237",
+    "mailing_address": "1499 Summit Road , 594-0010-0046-\nCincinnati, Ohio 45237",
     "property_price": "$24,109.91",
     "interest_rate": "7.00000%"
   },
@@ -243,7 +243,7 @@
     "first_owner": "STEVEN B AMUNDSON",
     "second_owner": null,
     "property_address": "\u00a7236 Globe Avenue, Cincinnati, OH 45212",
-    "mailing_address": "5236 GLOBE AVE Permanent Parcel No: 651-0006-0214-00\n\nCINCINNATI, OH 45212",
+    "mailing_address": "5236 GLOBE AVE Permanent \n\nCINCINNATI, OH 45212",
     "property_price": "$87,827.00",
     "interest_rate": "3.8750%"
   },
@@ -307,7 +307,7 @@
     "first_owner": "WILLRUDALE UNDERWOOD",
     "second_owner": null,
     "property_address": "1586 Cresthill Avenue, Cincinnati, OH 45237",
-    "mailing_address": "1586 Crest Hill Avenue, Apt. 2 Parcel No. 117-0015-0255-00\n\nCincinnati, Ohio 45237",
+    "mailing_address": "1586 Crest Hill Avenue, Apt. 2 \n\nCincinnati, Ohio 45237",
     "property_price": "$138,564.00",
     "interest_rate": "3.87500%"
   },
@@ -331,7 +331,7 @@
     "first_owner": "STEPHANIE HOLMES",
     "second_owner": "JOSHUA EDWARD HOLMES AKA\nJOSHUA HOLMES AKA JOSHUA E.\nHOLMES",
     "property_address": "404 Bonnie Brae Ave SE, Warren, OH 44484",
-    "mailing_address": "4351 Cappel Drive Parcel No. 179-0079-0272-00\n\nCincinnati, Ohio 45205",
+    "mailing_address": "4351 Cappel Drive \n\nCincinnati, Ohio 45205",
     "property_price": "$57,439.00",
     "interest_rate": "3.49000%"
   },
@@ -347,7 +347,7 @@
     "first_owner": "GILBERT FARMER",
     "second_owner": null,
     "property_address": "7887 Ramble View Unit 203, Cincinnati, OH 45231",
-    "mailing_address": "7887 RAMBLE VIEW - UNIT 203 PPN# 590-0201-0404-00 AND 590-\nCINCINNATI, OH 45231",
+    "mailing_address": "7887 RAMBLE VIEW - UNIT 203  AND 590-\nCINCINNATI, OH 45231",
     "property_price": "$128,762.00",
     "interest_rate": "2.75%"
   },
@@ -403,7 +403,7 @@
     "first_owner": "HORACE GREELY",
     "second_owner": null,
     "property_address": "6119 FAIRCREST CT, CINCINNATI, OH 45224-2601",
-    "mailing_address": "6119 FAIRCREST COURT : 236-0001-0156-00\nCINCINNATI, OH 45224",
+    "mailing_address": "6119 FAIRCREST COURT : \nCINCINNATI, OH 45224",
     "property_price": "$122,469.00",
     "interest_rate": "2.9900%"
   },
@@ -427,7 +427,7 @@
     "first_owner": "STEVE D MARSH",
     "second_owner": null,
     "property_address": "135 GROVE RD, CINCINNATI, OHIO 45215-1303",
-    "mailing_address": "135 Grove Road Parcel No. 598-0080-0346-00\n\nCincinnati, Ohio 45215",
+    "mailing_address": "135 Grove Road \n\nCincinnati, Ohio 45215",
     "property_price": "$117,936.33",
     "interest_rate": "4.87500%"
   },
@@ -451,7 +451,7 @@
     "first_owner": "DANIELLE RAYMOND",
     "second_owner": null,
     "property_address": "10260",
-    "mailing_address": "10260 STORM DRIVE PPN# 510-0113-0276-00\nCINCINNATI, OH 45251",
+    "mailing_address": "10260 STORM DRIVE \nCINCINNATI, OH 45251",
     "property_price": null,
     "interest_rate": "3.25%"
   },
@@ -515,7 +515,7 @@
     "first_owner": "BELINDA FOLSOM",
     "second_owner": null,
     "property_address": "543 Glenwood Avenue, Cincinnati, Ohio 45229",
-    "mailing_address": "543 Glenwood Avenue Parcel No. 113-0002-0091-00\n\nCincinnati, Ohio 45229",
+    "mailing_address": "543 Glenwood Avenue \n\nCincinnati, Ohio 45229",
     "property_price": "$2,510.21",
     "interest_rate": null
   },
@@ -563,7 +563,7 @@
     "first_owner": "LYNDA C DEITSCH",
     "second_owner": "Dan R Deitsch",
     "property_address": "1199 W SEYMOUR AVE, CINCINNATI, OH 45216-1839",
-    "mailing_address": "590-0203-0107-00.\n\nLynda C Deitsch\n1199 W Seymour Ave\nCincinnati, OH 45216",
+    "mailing_address": ".\n\nLynda C Deitsch\n1199 W Seymour Ave\nCincinnati, OH 45216",
     "property_price": "$108,000.00",
     "interest_rate": "6.750"
   },
