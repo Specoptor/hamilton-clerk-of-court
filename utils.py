@@ -568,8 +568,10 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         if match:
             return match.group(0)
 
-        pattern_2 = re.compile(r"interest\s+\D*\s*(\d+%)")
-        match_2 = pattern_2.search(text)
+        pattern_2 = r"interest\s+\D*\s*(\d+%)"
+        # Using the updated regex to find the percentage value in the sample text
+        match_2 = re.search(pattern_2, text)
+        # Extracting the matched percentage (including % sign) if
         if match_2:
             return match_2.group(1)
 
