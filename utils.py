@@ -379,7 +379,6 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         return None
 
 
-
     def mailing_address(text: str = pages[1]) -> str | None:
         """
         Extract the mailing address from the text.
@@ -392,17 +391,20 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         pattern_2 = re.compile(
             r'(?i:Plaintiff).*?(?:\b\d{3}-\d{4}-\d{4}-\d{2}\b|PARCEL NUMBER:.*?\n|Parcel No\..*?\n)?(\d+.*?\d{5})',
             re.MULTILINE | re.DOTALL)
+        parcel_pattern = re.compile(r'Parcel No\. \d{3}-\d{4}-\d{4}-\d{2}')
 
         # Try to find a match using pattern_1
         match_1 = pattern_1.search(text)
         if match_1:
             address = match_1.group(1).strip()
+            address = parcel_pattern.sub('', address)  # Remove the "Parcel No. 113-0002-0097-00" pattern
             return address
 
         # Try to find a match using pattern_2
         match_2 = pattern_2.search(text)
         if match_2:
             address = match_2.group(1).strip()
+            address = parcel_pattern.sub('', address)  # Remove the "Parcel No. 113-0002-0097-00" pattern
 
             # Check for specific redundant patterns and skip them
             redundant_patterns = [
@@ -410,7 +412,7 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
                 "2. There has been a default",
                 "04920115-1 E-FILED",
                 "593-0005-0175-00\n\n-VS-\n\nUnknown heirs,"
-                ]
+            ]
             if any(pattern.lower() in address.lower() for pattern in redundant_patterns):
                 return None
 
