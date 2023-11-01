@@ -397,15 +397,17 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         match_1 = pattern_1.search(text)
         if match_1:
             address = match_1.group(1).strip()
-            address = parcel_no_pattern.sub('', address)  # Remove the "Parcel No. 113-0002-0097-00" pattern
+            address = parcel_no_pattern.sub('', address)  # Remove all parcel number formats
             address = standalone_parcel_pattern.sub('', address)  # Remove the standalone "248-0001-0142-00" pattern
+            if "Address Unknown" in address:  # Check for the unwanted string
+                return None
             return address
 
         # Try to find a match using pattern_2
         match_2 = pattern_2.search(text)
         if match_2:
             address = match_2.group(1).strip()
-            address = parcel_no_pattern.sub('', address)  # Remove the "Parcel No. 113-0002-0097-00" pattern
+            address = parcel_no_pattern.sub('', address)  # Remove all parcel number formats
             address = standalone_parcel_pattern.sub('', address)  # Remove the standalone "248-0001-0142-00" pattern
 
             # Check for specific redundant patterns and skip them
@@ -415,7 +417,8 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
                 "04920115-1 E-FILED",
                 "593-0005-0175-00\n\n-VS-\n\nUnknown heirs,"
             ]
-            if any(pattern.lower() in address.lower() for pattern in redundant_patterns):
+            if any(pattern.lower() in address.lower() for pattern in
+                   redundant_patterns) or "Address Unknown" in address:
                 return None
 
             return address
