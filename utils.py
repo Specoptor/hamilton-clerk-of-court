@@ -545,7 +545,7 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         # Extract the first dollar amount appearing after the original amount
         new_pattern3 = re.compile(r'(?i:original\s*(?:AMOUNT)?)\s*.*?(\$[\d,]+(?:\.\d{2})?)')
         new_match3 = new_pattern3.search(text)
-        if new_match3:
+        if new_match3 and "$0" not in new_match3.group(1):
             return new_match3.group(1)
 
         pattern4 = re.compile(r'(?i:promise to pay).*?(\$[\d,]+(?:\.\d{2})?)')
