@@ -555,6 +555,24 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
 
         return None
 
+    def extract_hoa_amount(text: str = pdf_text) -> str | None:
+        """
+            Extract the HOA amount from the text based on the given pattern.
+
+            :param text: The text from which to extract the HOA amount.
+            :return: The extracted HOA amount if found, else None.
+            """
+        # Define the regular expression for the HOA amount pattern
+        # This regex focuses on the phrase structure and the amount format, allowing for variations in the person's name and written-out amount.
+        hoa_pattern = re.compile(r'owes the Association the sum of .*?\(\$(\d{1,3}(?:,\d{3})*\.\d{2})\)')
+
+        # Search for the pattern in the text
+        match_hoa = re.search(hoa_pattern, text)
+
+        # If a match is found, return the matched HOA amount; otherwise return None
+        if match_hoa:
+            return match_hoa.group(0)
+
     def interest_rate(text: str = pdf_text) -> str | None:
         """
         Extract the interest rate from the entire pdf_text.
@@ -586,6 +604,7 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         return match_value_mixed_case
 
 
+
     return {
         'first_owner': first_owner(),
         'second_owner': second_owner(),
@@ -593,6 +612,7 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         'mailing_address': mailing_address(),
         'property_price': property_price(),
         'interest_rate': interest_rate(),
+        'HOA Amount' : extract_hoa_amount(),
     }
 
 
