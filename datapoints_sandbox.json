@@ -409,7 +409,7 @@
     "second_owner": null,
     "property_address": null,
     "mailing_address": "5001 KINGSLEY DRIVE\nCINCINNATI, OH 45227",
-    "property_price": "$0",
+    "property_price": null,
     "interest_rate": "9.2400%",
     "HOA Amount": null
   },
@@ -643,7 +643,7 @@
     "second_owner": null,
     "property_address": null,
     "mailing_address": "5001 KINGSLEY DRIVE MAIL DROP:\n1MOB10\nCINCINNATI, OH 45227",
-    "property_price": "$0",
+    "property_price": null,
     "interest_rate": "10%",
     "HOA Amount": null
   },
