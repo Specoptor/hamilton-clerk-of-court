@@ -291,7 +291,7 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         for i, pattern in enumerate(patterns):
             match = re.search(pattern, text)
             if match:
-                checks = ['also serve at:','united states', 'plaintiff', 'in the court of common']
+                checks = ['also serve at:', 'united states', 'plaintiff', 'in the court of common']
                 for check in checks:
                     if not match.group(1).lower().startswith(check):
                         continue
@@ -424,6 +424,7 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
             return address
 
         return None
+
     def property_price(text: str = pdf_text) -> str | None:
         """
         Extract the first price appearing before the interest rate, or the dollar amount
@@ -564,7 +565,7 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
             """
         # Define the regular expression for the HOA amount pattern
         # This regex focuses on the phrase structure and the amount format, allowing for variations in the person's name and written-out amount.
-        hoa_pattern = re.compile(r'owes the Association the sum of .*?\(\$(\d{1,3}(?:,\d{3})*\.\d{2})\)')
+        hoa_pattern = re.compile(r'owes the Association the sum of .*?\(\$(\d{1,3}(?:,\d{3})*\.\d{2})\)', re.IGNORECASE)
 
         # Search for the pattern in the text
         match_hoa = re.search(hoa_pattern, text)
@@ -572,6 +573,14 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         # If a match is found, return the matched HOA amount; otherwise return None
         if match_hoa:
             return match_hoa.group(0)
+
+        pattern = r"(?:indebted to Plaintiff in the amount of)" \
+                  r"[\w\s,.]{0,10}(\$\d{1,3}(?:,\d{3})*\.\d{2})"
+        match = re.search(pattern, text)
+        if match and match.group(1) != ',':
+            return match.group(1)
+
+        return None
 
     def interest_rate(text: str = pdf_text) -> str | None:
         """
@@ -603,8 +612,6 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         match_value_mixed_case = match_mixed_case.group(1) if match_mixed_case else None
         return match_value_mixed_case
 
-
-
     return {
         'first_owner': first_owner(),
         'second_owner': second_owner(),
@@ -612,7 +619,7 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
         'mailing_address': mailing_address(),
         'property_price': property_price(),
         'interest_rate': interest_rate(),
-        'HOA Amount' : extract_hoa_amount(),
+        'HOA Amount': extract_hoa_amount(),
     }
 
 
