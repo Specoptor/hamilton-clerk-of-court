@@ -575,6 +575,11 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
             # Group 1 is for amounts in parentheses after "Dollars", Group 2 for other matches
             return match.group(1) if match.group(1) else match.group(2)
 
+        pattern_2 = r"Defendant, \w+ (?:\w\. )?\w+, in the amount of \$(\d+(?:,\d{3})*\.\d{2})"
+        match_2 = re.search(pattern_2, text)
+        if match_2:
+            return match_2.group(1)
+
         return None
 
     def interest_rate(text: str = pdf_text) -> str | None:
