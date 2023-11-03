@@ -558,27 +558,22 @@ def extract_datapoints_from_pdf(pages: list[str]) -> dict[str, str]:
 
     def extract_hoa_amount(text: str = pdf_text) -> str | None:
         """
-            Extract the HOA amount from the text based on the given pattern.
+        Extract the HOA amount from the text based on the given pattern.
 
-            :param text: The text from which to extract the HOA amount.
-            :return: The extracted HOA amount if found, else None.
-            """
-        # Define the regular expression for the HOA amount pattern
-        # This regex focuses on the phrase structure and the amount format, allowing for variations in the person's name and written-out amount.
-        hoa_pattern = re.compile(r'owes the Association the sum of .*?\(\$(\d{1,3}(?:,\d{3})*\.\d{2})\)', re.IGNORECASE)
+        :param text: The text from which to extract the HOA amount.
+        :return: The extracted HOA amount if found, else None.
+        """
 
-        # Search for the pattern in the text
-        match_hoa = re.search(hoa_pattern, text)
+        hoa_pattern = re.compile(
+            r"(?:Dollars \((\$\d{1,3}(?:,\d{3})*\.\d{2}))\)|"
+            r"(?:indebted to Plaintiff|judgment against|owes the Association)[\s\S]*?"
+            r"(\$\d{1,3}(?:,\d{3})*\.\d{2})"
+        )
 
-        # If a match is found, return the matched HOA amount; otherwise return None
-        if match_hoa:
-            return match_hoa.group(0)
-
-        pattern = r"(?:indebted to Plaintiff in the amount of)" \
-                  r"[\w\s,.]{0,10}(\$\d{1,3}(?:,\d{3})*\.\d{2})"
-        match = re.search(pattern, text)
-        if match and match.group(1) != ',':
-            return match.group(1)
+        match = hoa_pattern.search(text)
+        if match:
+            # Group 1 is for amounts in parentheses after "Dollars", Group 2 for other matches
+            return match.group(1) if match.group(1) else match.group(2)
 
         return None
 
